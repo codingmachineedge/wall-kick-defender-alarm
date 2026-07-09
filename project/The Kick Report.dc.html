@@ -19,6 +19,13 @@
   a:hover { color: #ffb14d; }
   ::selection { background: #f0921f; color: #14110d; }
   @keyframes tkr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @media (max-width: 700px) {
+    .tkr-topbar { padding: 12px 14px !important; gap: 9px !important; }
+    .tkr-back { width: 100%; font-size: 12px !important; }
+    .tkr-links { width: 100%; display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+    .tkr-links a { min-width: 0; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 1px solid rgba(244,239,230,0.16); border-radius: 9px; padding: 9px 8px; }
+    .tkr-count { display: none; }
+  }
 </style>
 </helmet>
 
@@ -26,12 +33,12 @@
 
   <!-- MASTHEAD -->
   <header style="border-bottom:3px double rgba(244,239,230,0.25);">
-    <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;">
-      <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
-      <span style="display:flex;gap:14px;flex-wrap:wrap;color:#7d7566;letter-spacing:0.12em;">
+    <div class="tkr-topbar" style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;">
+      <a class="tkr-back" href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
+      <span class="tkr-links" style="display:flex;gap:14px;flex-wrap:wrap;color:#7d7566;letter-spacing:0.12em;">
         <a href="Shop.dc.html" style="color:#a89f8e;">SHOP</a>
         <a href="Downloads.dc.html" style="color:#a89f8e;">DOWNLOADS</a>
-        <span>INDEPENDENT SLEEP JOURNALISM · {{ count }} DISPATCHES</span>
+        <span class="tkr-count">INDEPENDENT SLEEP JOURNALISM · {{ count }} DISPATCHES</span>
       </span>
     </div>
     <div style="max-width:1200px;margin:0 auto;padding:20px clamp(16px,4vw,36px) 24px;text-align:center;border-top:1px solid rgba(244,239,230,0.08);">

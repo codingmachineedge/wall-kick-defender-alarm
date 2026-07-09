@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wall Kick Defender Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/site/Wall%20Kick%20Defender.dc.html">
+      <span class="brand-mark">W</span>
+      <span>Wall Kick Defender</span>
+    </a>
+    <div class="topbar-actions">
+      <span id="tierPill" class="pill">Tier</span>
+      <span id="haPill" class="pill pill-muted">Home Assistant</span>
+      <button id="tokenButton" class="button button-ghost" type="button">Token</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero-grid">
+      <div class="panel live-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Live Defense</p>
+            <h1 id="defenseTitle">Loading dashboard</h1>
+          </div>
+          <span id="armedBadge" class="state-badge">Unknown</span>
+        </div>
+
+        <div class="signal-row">
+          <div class="signal-core">
+            <span id="signalDot" class="signal-dot"></span>
+            <div>
+              <strong id="signalText">Waiting for server</strong>
+              <span id="signalMeta">No events loaded yet</span>
+            </div>
+          </div>
+          <div class="confidence">
+            <span id="confidenceValue">--</span>
+            <small>confidence</small>
+          </div>
+        </div>
+
+        <div id="waveform" class="waveform" aria-label="Latest vibration waveform"></div>
+
+        <div class="stats-grid">
+          <div><strong id="statTotal">0</strong><span>Total</span></div>
+          <div><strong id="stat24">0</strong><span>24 hours</span></div>
+          <div><strong id="statWeek">0</strong><span>7 days</span></div>
+          <div><strong id="statAvg">--</strong><span>Avg score</span></div>
+        </div>
+
+        <div class="command-row">
+          <button id="armButton" class="button button-primary" type="button">Arm</button>
+          <button id="testButton" class="button button-danger" type="button">Test Alert</button>
+          <button id="simulateButton" class="button button-secondary" type="button">Simulate Impact</button>
+          <button id="refreshButton" class="button button-ghost" type="button">Refresh</button>
+        </div>
+      </div>
+
+      <aside class="panel device-panel">
+        <img src="/site/images/product-deterrent.png" alt="Wall Kick Defender hardware kit">
+        <div class="device-status">
+          <div>
+            <p class="eyebrow">Runtime</p>
+            <strong id="runtimeText">Starting</strong>
+          </div>
+          <div>
+            <p class="eyebrow">Last Poll</p>
+            <strong id="pollText">--</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="dashboard-grid">
+      <form id="configForm" class="panel config-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Entities</p>
+            <h2>Sensor and Speaker Setup</h2>
+          </div>
+          <button id="discoverButton" class="button button-ghost" type="button">Discover</button>
+        </div>
+
+        <label class="field">
+          <span>Vibration sensors</span>
+          <textarea id="sensorsInput" rows="4" spellcheck="false"></textarea>
+          <small id="sensorCap">Tier cap applies on save.</small>
+        </label>
+
+        <label class="field">
+          <span>Media players</span>
+          <textarea id="playersInput" rows="4" spellcheck="false"></textarea>
+          <small id="playerCap">Tier cap applies on save.</small>
+        </label>
+
+        <div id="discoveryResults" class="discovery-results" hidden></div>
+
+        <div class="form-actions">
+          <button class="button button-primary" type="submit">Save Setup</button>
+          <a class="button button-ghost" href="/api/events.csv">Export CSV</a>
+        </div>
+      </form>
+
+      <form id="responseForm" class="panel response-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Response</p>
+            <h2>Retaliation Settings</h2>
+          </div>
+          <span id="responseModePill" class="pill">TTS</span>
+        </div>
+
+        <div class="split-fields">
+          <label class="field">
+            <span>Volume</span>
+            <input id="volumeInput" type="range" min="0" max="1" step="0.01">
+            <small id="volumeValue">0.00</small>
+          </label>
+          <label class="field">
+            <span>Threshold</span>
+            <input id="thresholdInput" type="number" min="0" step="0.1">
+          </label>
+        </div>
+
+        <div class="split-fields">
+          <label class="field">
+            <span>Cooldown seconds</span>
+            <input id="cooldownInput" type="number" min="1" step="1">
+          </label>
+          <label class="field">
+            <span>Poll interval ms</span>
+            <input id="pollInput" type="number" min="250" step="250">
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Active states</span>
+          <input id="activeStatesInput" type="text" spellcheck="false">
+        </label>
+
+        <label class="field">
+          <span>Response mode</span>
+          <select id="responseModeInput">
+            <option value="tts">TTS service</option>
+            <option value="media">Play media</option>
+          </select>
+        </label>
+
+        <label class="field tts-field">
+          <span>TTS service</span>
+          <input id="ttsServiceInput" type="text" spellcheck="false">
+        </label>
+
+        <label class="field media-field">
+          <span>Media content ID or URL</span>
+          <input id="mediaUrlInput" type="text" spellcheck="false">
+        </label>
+
+        <label class="field media-field">
+          <span>Media content type</span>
+          <input id="mediaTypeInput" type="text" spellcheck="false">
+        </label>
+
+        <label class="field">
+          <span>Alert message</span>
+          <textarea id="messageInput" rows="3"></textarea>
+        </label>
+
+        <div class="toggles">
+          <label><input id="announceInput" type="checkbox"> Announce</label>
+          <label><input id="turnOnInput" type="checkbox"> Turn on first</label>
+          <label id="escalationLabel"><input id="escalationInput" type="checkbox"> Escalation</label>
+        </div>
+
+        <fieldset id="sleepWindowGroup" class="fieldset">
+          <legend>Sleep window</legend>
+          <label><input id="sleepEnabledInput" type="checkbox"> Enabled</label>
+          <input id="sleepStartInput" type="time">
+          <input id="sleepEndInput" type="time">
+        </fieldset>
+
+        <button class="button button-primary" type="submit">Save Response</button>
+      </form>
+
+      <section class="panel tier-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Purchased Tier</p>
+            <h2 id="tierTitle">Tier</h2>
+          </div>
+        </div>
+        <p id="tierSummary" class="muted"></p>
+        <div id="tierCaps" class="caps-list"></div>
+        <div id="featureList" class="feature-list"></div>
+      </section>
+
+      <section class="panel entity-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Live Entities</p>
+            <h2>Current States</h2>
+          </div>
+        </div>
+        <div id="entityStates" class="entity-states"></div>
+      </section>
+
+      <section class="panel log-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Receipts</p>
+            <h2>Incident Log</h2>
+          </div>
+          <span id="logCount" class="pill pill-muted">0 events</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Time</th>
+                <th>Sensor</th>
+                <th>Strength</th>
+                <th>Confidence</th>
+                <th>Response</th>
+              </tr>
+            </thead>
+            <tbody id="eventTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="tokenDialog">
+    <form method="dialog" class="token-box">
+      <h2>Dashboard Token</h2>
+      <p>Enter the token configured in <code>WKD_DASHBOARD_TOKEN</code>.</p>
+      <input id="tokenInput" type="password" autocomplete="current-password">
+      <div class="form-actions">
+        <button id="saveTokenButton" class="button button-primary" value="save" type="button">Save Token</button>
+        <button class="button button-ghost" value="cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

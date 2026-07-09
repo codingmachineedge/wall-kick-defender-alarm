@@ -1,0 +1,14 @@
+{
+  "name": "wall-kick-defender-alarm",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Wall Kick Defender server and dashboard for Home Assistant vibration sensors and media players.",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "test": "node --test server/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

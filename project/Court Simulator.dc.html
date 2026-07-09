@@ -18,15 +18,21 @@
   a { color: #f0921f; text-decoration: none; }
   a:hover { color: #ffb14d; }
   ::selection { background: #f0921f; color: #14110d; }
+  @media (max-width: 700px) {
+    .wkd-subnav-inner { padding: 12px 14px !important; gap: 10px !important; }
+    .wkd-subnav-brand { width: 100%; font-size: 13px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wkd-subnav-links { width: 100% !important; display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+    .wkd-subnav-links a { min-width: 0; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 1px solid rgba(244,239,230,0.16); border-radius: 9px; padding: 9px 8px !important; }
+  }
 </style>
 </helmet>
 
 <div style="font-family:Archivo,sans-serif;color:#f4efe6;background:#14110d;max-width:100%;min-height:100vh;overflow-x:hidden;">
 
   <header style="position:sticky;top:0;z-index:40;background:rgba(20,17,13,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,239,230,0.1);">
-    <div style="max-width:1240px;margin:0 auto;padding:16px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 22px;font-family:'Space Mono',monospace;font-size:13px;">
-      <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
-      <span style="display:flex;gap:14px;flex-wrap:wrap;">
+    <div class="wkd-subnav-inner" style="max-width:1240px;margin:0 auto;padding:16px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 22px;font-family:'Space Mono',monospace;font-size:13px;">
+      <a class="wkd-subnav-brand" href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
+      <span class="wkd-subnav-links" style="display:flex;gap:14px;flex-wrap:wrap;">
         <a href="The Kick Report.dc.html" style="color:#a89f8e;">News</a>
         <a href="Shop.dc.html" style="color:#a89f8e;">Shop</a>
         <a href="Downloads.dc.html" style="color:#a89f8e;">Downloads</a>
@@ -40,13 +46,17 @@
         <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:18px;">COURT SIMULATOR · APRIL 1, 2026</div>
         <h1 style="font-size:clamp(42px,8vw,88px);line-height:0.92;font-weight:900;letter-spacing:-0.02em;margin:0;">Put the wall kick on trial.</h1>
         <p style="font-family:Newsreader,serif;font-size:clamp(19px,2.3vw,25px);line-height:1.45;color:#d8d0c2;margin:24px 0 30px;">A realistic mock hearing flow for turning Defender receipts into exhibits, objections, testimony, cross-exam, and a judge-style finding that the kicker can be sued in court.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
+          <a href="#documents" style="background:#f0921f;color:#14110d;padding:15px 22px;border-radius:12px;font-weight:900;">Open PDF packet</a>
+          <a href="#simulator" style="border:1px solid rgba(244,239,230,0.25);color:#f4efe6;padding:15px 22px;border-radius:12px;font-weight:800;">Run hearing</a>
+        </div>
         <div style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:#a89f8e;background:#1a1610;border:1px solid rgba(244,239,230,0.12);border-radius:14px;padding:16px 18px;">Simulator only. This is not legal advice, not a real filing system, and not a substitute for a licensed attorney. It is, however, extremely prepared.</div>
       </div>
       <img src="images/court-simulator.png" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:16px;display:block;border:1px solid rgba(244,239,230,0.12);">
     </div>
   </section>
 
-  <section style="padding:clamp(34px,5vw,70px) clamp(16px,4vw,36px);">
+  <section id="simulator" style="padding:clamp(34px,5vw,70px) clamp(16px,4vw,36px);">
     <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px;align-items:start;">
 
       <aside style="display:flex;flex-direction:column;gap:18px;">
@@ -138,6 +148,27 @@
     </div>
   </section>
 
+  <section id="documents" style="padding:clamp(34px,5vw,70px) clamp(16px,4vw,36px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.08);border-bottom:1px solid rgba(244,239,230,0.08);">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap;margin-bottom:24px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#f0921f;margin-bottom:10px;">SIMULATED COURT PDFS</div>
+          <h2 style="font-size:clamp(30px,5vw,54px);line-height:0.98;font-weight:900;margin:0;">Court packet, ready to pretend-file.</h2>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:#a89f8e;max-width:380px;line-height:1.5;">{{ documentCount }} simulated PDFs. Every example says simulation only, not legal advice, not for filing, and includes its own embedded exhibit image.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+        <sc-for list="{{ documents }}" as="doc" hint-placeholder-count="12">
+          <a href="{{ doc.href }}" style="background:#1a1610;border:1px solid rgba(244,239,230,0.1);border-radius:14px;padding:22px;color:#f4efe6;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:{{ doc.color }};">{{ doc.tag }}</div>
+            <div style="font-size:24px;font-weight:900;line-height:1.05;">{{ doc.title }}</div>
+            <p style="font-family:Newsreader,serif;font-size:16px;line-height:1.45;color:#a89f8e;margin:0;">{{ doc.description }}</p>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
   <footer style="padding:32px clamp(16px,4vw,36px);border-top:1px solid rgba(244,239,230,0.1);font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">
     <div style="max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
       <span>WALL KICK DEFENDER COURT SIMULATOR</span>
@@ -219,6 +250,98 @@ class Component extends DCLogic {
       "Please explain why the sensor, speaker clip, and sleep tracker all changed at the same second.",
       "Is it your testimony that the wall generated this evidence against you on its own?",
     ];
+    const coreDocuments = [
+      {
+        tag: "PDF / CORE COMPLAINT",
+        title: "Simulated Civil Complaint",
+        href: "court-documents/simulated-civil-complaint.pdf",
+        color: "#e5484d",
+        description: "Parties, venue, allegations, claims, and prayer for relief.",
+      },
+      {
+        tag: "PDF / CORE EXHIBITS",
+        title: "Simulated Exhibit Binder",
+        href: "court-documents/simulated-exhibit-binder.pdf",
+        color: "#8ec63f",
+        description: "Index, exhibit pages, foundation notes, and chain-of-custody blurbs.",
+      },
+      {
+        tag: "PDF / CORE DECLARATION",
+        title: "Records Custodian Declaration",
+        href: "court-documents/simulated-records-declaration.pdf",
+        color: "#f0921f",
+        description: "Mock authentication language for the Defender receipt packet.",
+      },
+      {
+        tag: "PDF / CORE ORDER",
+        title: "Simulated Proposed Order",
+        href: "court-documents/simulated-proposed-order.pdf",
+        color: "#d6b35f",
+        description: "Mock findings that the kicker can be sued in court, fictionally.",
+      },
+    ];
+    const exampleDocuments = [
+      ["01", "Civil Complaint", "example-01-civil-complaint.pdf"],
+      ["02", "Exhibit Binder", "example-02-exhibit-binder.pdf"],
+      ["03", "Records Declaration", "example-03-records-declaration.pdf"],
+      ["04", "Proposed Order", "example-04-proposed-order.pdf"],
+      ["05", "Motion to Admit Sensor Records", "example-05-motion-to-admit-sensor-records.pdf"],
+      ["06", "Temporary Quiet Order Application", "example-06-temporary-quiet-order-application.pdf"],
+      ["07", "Chain of Custody Certificate", "example-07-chain-of-custody-certificate.pdf"],
+      ["08", "Expert Acoustic Report", "example-08-expert-acoustic-report.pdf"],
+      ["09", "Sleep Loss Damages Worksheet", "example-09-sleep-loss-damages-worksheet.pdf"],
+      ["10", "Cross-Examination Outline", "example-10-cross-examination-outline.pdf"],
+      ["11", "Settlement Conference Statement", "example-11-settlement-conference-statement.pdf"],
+      ["12", "Notice of Wall-Kick Evidence", "example-12-notice-of-wall-kick-evidence.pdf"],
+      ["13", "Affidavit of Neighbor", "example-13-affidavit-of-neighbor.pdf"],
+      ["14", "Motion in Limine re Stretching Excuse", "example-14-motion-in-limine-re-stretching-excuse.pdf"],
+      ["15", "Bench Trial Brief", "example-15-bench-trial-brief.pdf"],
+      ["16", "Statement of Undisputed Facts", "example-16-statement-of-undisputed-facts.pdf"],
+      ["17", "Request for Admissions", "example-17-request-for-admissions.pdf"],
+      ["18", "Interrogatories to the Kicker", "example-18-interrogatories-to-the-kicker.pdf"],
+      ["19", "Notice of Deposition", "example-19-notice-of-deposition.pdf"],
+      ["20", "Subpoena Duces Tecum for Bedframe", "example-20-subpoena-duces-tecum-for-bedframe.pdf"],
+      ["21", "Hearing Exhibit List", "example-21-hearing-exhibit-list.pdf"],
+      ["22", "Opening Statement Outline", "example-22-opening-statement-outline.pdf"],
+      ["23", "Closing Argument Outline", "example-23-closing-argument-outline.pdf"],
+      ["24", "Courtroom Timeline", "example-24-courtroom-timeline.pdf"],
+      ["25", "Witness List", "example-25-witness-list.pdf"],
+      ["26", "Authentication Memo", "example-26-authentication-memo.pdf"],
+      ["27", "Declaration of Sensor Installer", "example-27-declaration-of-sensor-installer.pdf"],
+      ["28", "Ringtone Notice Log", "example-28-ringtone-notice-log.pdf"],
+      ["29", "Family Group Chat Exhibit", "example-29-family-group-chat-exhibit.pdf"],
+      ["30", "Photo Log of Sensor Placement", "example-30-photo-log-of-sensor-placement.pdf"],
+      ["31", "AI Confidence Audit", "example-31-ai-confidence-audit.pdf"],
+      ["32", "False-Kick Review Sheet", "example-32-false-kick-review-sheet.pdf"],
+      ["33", "Restitution Calculation", "example-33-restitution-calculation.pdf"],
+      ["34", "Injunction Checklist", "example-34-injunction-checklist.pdf"],
+      ["35", "Motion for Sanctions", "example-35-motion-for-sanctions.pdf"],
+      ["36", "Proposed Findings of Fact", "example-36-proposed-findings-of-fact.pdf"],
+      ["37", "Proposed Conclusions of Law", "example-37-proposed-conclusions-of-law.pdf"],
+      ["38", "Verdict Form", "example-38-verdict-form.pdf"],
+      ["39", "Appeal Preservation Notes", "example-39-appeal-preservation-notes.pdf"],
+      ["40", "Mediation Brief", "example-40-mediation-brief.pdf"],
+      ["41", "Pretrial Conference Statement", "example-41-pretrial-conference-statement.pdf"],
+      ["42", "Trial Notebook Cover Sheet", "example-42-trial-notebook-cover-sheet.pdf"],
+      ["43", "Exhibit Objection Chart", "example-43-exhibit-objection-chart.pdf"],
+      ["44", "Hearsay Response Memo", "example-44-hearsay-response-memo.pdf"],
+      ["45", "Relevance Brief", "example-45-relevance-brief.pdf"],
+      ["46", "Foundation Checklist", "example-46-foundation-checklist.pdf"],
+      ["47", "Judicial Notice Request", "example-47-judicial-notice-request.pdf"],
+      ["48", "Notice to Preserve Evidence", "example-48-notice-to-preserve-evidence.pdf"],
+      ["49", "Proof of Service", "example-49-proof-of-service.pdf"],
+      ["50", "Mock Judgment Packet", "example-50-mock-judgment-packet.pdf"],
+    ].map(([number, title, file], index) => {
+      const colors = ["#8ec63f", "#f0921f", "#e5484d", "#d6b35f"];
+      return {
+        tag: `PDF / EXAMPLE ${number} / IMAGE`,
+        title: `Example ${number}: ${title}`,
+        href: `court-documents/${file}`,
+        color: colors[index % colors.length],
+        description: `Image-backed ${title.toLowerCase()} packet with a unique embedded exhibit graphic for simulator evidence play.`,
+      };
+    });
+    const documents = [...coreDocuments, ...exampleDocuments];
     return {
       plaintiff: packet.plaintiff,
       defendant: packet.defendant,
@@ -241,6 +364,8 @@ class Component extends DCLogic {
       finding: packet.finding,
       damages: packet.damages,
       questions,
+      documents,
+      documentCount: documents.length,
       usePacket1: this.usePacket1,
       usePacket2: this.usePacket2,
       nextStage: this.nextStage,
