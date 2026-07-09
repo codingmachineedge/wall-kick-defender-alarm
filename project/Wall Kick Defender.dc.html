@@ -493,6 +493,72 @@
           <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— The Brother (verified perpetrator)</div>
         </div>
       </div>
+
+      <div style="margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;">
+        <div style="background:#100e0a;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:24px;">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:#8ec63f;margin-bottom:10px;">REVIEW INDEX</div>
+          <div style="font-size:42px;font-weight:900;line-height:1;color:#f0921f;">4.86</div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;margin-top:8px;">average product review from verified device owners</div>
+        </div>
+        <div style="background:#100e0a;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:24px;">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:#f0921f;margin-bottom:10px;">SOCIAL VOLUME</div>
+          <div style="font-size:42px;font-weight:900;line-height:1;color:#8ec63f;">18.4k</div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;margin-top:8px;">fictional posts tagged #WallKicks on April 1, 2026</div>
+        </div>
+        <div style="background:#100e0a;border:1px solid rgba(229,72,77,0.25);border-radius:16px;padding:24px;">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:#e5484d;margin-bottom:10px;">NOTHING PLAN</div>
+          <div style="font-size:42px;font-weight:900;line-height:1;color:#e5484d;">0.2</div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;margin-top:8px;">average rating for doing nothing and hoping the wall becomes honest</div>
+        </div>
+      </div>
+
+      <div style="margin-top:54px;">
+        <div style="display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px;">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#8ec63f;margin-bottom:10px;">SOCIAL MEDIA REVIEWS</div>
+            <h3 style="font-size:clamp(30px,5vw,52px);line-height:1;font-weight:900;margin:0;">The internet is tired too.</h3>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#a89f8e;max-width:360px;line-height:1.5;">Fictional posts from verified insomniacs, family group chats, and people who just learned walls keep receipts.</div>
+        </div>
+        <div style="columns:280px;column-gap:18px;">
+          <sc-for list="{{ socialReviews }}" as="r" hint-placeholder-count="10">
+            <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:16px;padding:20px 22px;margin-bottom:18px;">
+              <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;">
+                <span style="width:38px;height:38px;border-radius:50%;background:{{ r.color }};color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">{{ r.initial }}</span>
+                <div>
+                  <div style="font-weight:800;font-size:15px;">{{ r.name }}</div>
+                  <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ r.handle }} · {{ r.time }}</div>
+                </div>
+              </div>
+              <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">{{ r.text }}</p>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ r.stats }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="margin-top:54px;">
+        <div style="display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px;">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#f0921f;margin-bottom:10px;">PRODUCT REVIEW DESK</div>
+            <h3 style="font-size:clamp(30px,5vw,52px);line-height:1;font-weight:900;margin:0;">Reviewed like a real product.</h3>
+          </div>
+          <a href="Shop.dc.html#product-reviews" style="border:1px solid rgba(244,239,230,0.22);color:#f4efe6;border-radius:12px;padding:13px 16px;font-weight:800;">Open full shop reviews</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px;">
+          <sc-for list="{{ productReviews }}" as="p" hint-placeholder-count="4">
+            <div style="background:#1a1610;border:1px solid {{ p.border }};border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;color:{{ p.color }};">{{ p.label }}</div>
+                <div style="font-size:24px;font-weight:900;color:{{ p.color }};">{{ p.rating }}</div>
+              </div>
+              <div style="font-size:22px;font-weight:900;line-height:1.1;">{{ p.name }}</div>
+              <p style="font-size:16px;line-height:1.45;color:#a89f8e;margin:0;">{{ p.text }}</p>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ p.verdict }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -969,9 +1035,28 @@ class Component extends DCLogic {
       const color = triggered ? (i % 5 === 0 ? "#f0921f" : "#e5484d") : (i % 6 === 0 ? "#f0921f" : "#8ec63f");
       return { h: h + "%", color };
     });
+    const socialReviews = [
+      { initial: "R", name: "rem_recovered", handle: "@remrecovered", time: "1:18 AM", color: "#8ec63f", text: "The first night after installing Wall Kick Defender, the wall went silent after one warning. I woke up suspiciously refreshed.", stats: "12.8k likes / 2.1k reposts" },
+      { initial: "D", name: "drywall_diarist", handle: "@drywalldiary", time: "3:47 AM", color: "#f0921f", text: "He said it was not him. The receipt had a waveform, a timestamp, and the exact moment his game lobby ended. Beautiful.", stats: "8.4k likes / 1.7k reposts" },
+      { initial: "M", name: "midnight_court", handle: "@midnightcourt", time: "2:09 AM", color: "#d6b35f", text: "The Court Simulator packet made my family meeting feel like opening statements. Suddenly everyone cared about evidence.", stats: "5.2k likes / 912 reposts" },
+      { initial: "F", name: "free_tier_tester", handle: "@freetiertester", time: "4:04 AM", color: "#e5484d", text: "Free works, but Sponsored Silence choosing the worst possible moment is psychological warfare. Upgraded before breakfast.", stats: "3.1k likes / 604 reposts" },
+      { initial: "N", name: "nothingsurvivor", handle: "@nothingsurv", time: "2:58 AM", color: "#a89f8e", text: "Tried doing nothing for six months. Rating: zero receipts, infinite arguments, no graph, no ringtone, no peace.", stats: "9.9k likes / 2.8k reposts" },
+      { initial: "P", name: "parental_exhibit_a", handle: "@exhibita", time: "12:41 AM", color: "#8ec63f", text: "The 2008 Nokia ringtone activated and both kids immediately became legal scholars. I have never seen accountability arrive so fast.", stats: "6.6k likes / 1.2k reposts" },
+      { initial: "S", name: "sleep_receipts", handle: "@sleepreceipts", time: "3:15 AM", color: "#f0921f", text: "Product review: The Deterrent is basically a tiny night clerk with a grudge and better documentation than my landlord.", stats: "4.7k likes / 833 reposts" },
+      { initial: "O", name: "overlord_owner", handle: "@overlordowner", time: "1:55 AM", color: "#e5484d", text: "Overlord mode is not subtle. Neither was the kicking. Balance has been restored.", stats: "7.3k likes / 1.4k reposts" },
+      { initial: "C", name: "coinbase_demo_buyer", handle: "@cryptosleeper", time: "9:30 PM", color: "#4bb3c9", text: "Clicked the crypto checkout demo, paid nothing, still got sent to downloads. Best transaction of April 1, 2026.", stats: "2.2k likes / 410 reposts" },
+      { initial: "W", name: "wall_witness", handle: "@wallwitness", time: "3:33 AM", color: "#9c9c9c", text: "The wall has always known. The Defender just taught it to export PDFs.", stats: "11.1k likes / 3.0k reposts" },
+    ];
+    const productReviews = [
+      { label: "STARTER KIT", name: "The Ceasefire", rating: "4.4", color: "#8ec63f", border: "rgba(142,198,63,0.35)", text: "Best for a single shared wall and a first family meeting. Light on features, strong on proof.", verdict: "Verdict: good first device, still hardware required." },
+      { label: "BEST SELLER", name: "The Deterrent", rating: "4.9", color: "#f0921f", border: "rgba(240,146,31,0.55)", text: "The cleanest balance of sensor, speaker, receipts, and 2008 Nokia consequences.", verdict: "Verdict: the default pick for serious sleepers." },
+      { label: "TOTAL COVERAGE", name: "Mutually Assured Disruption", rating: "4.7", color: "#e5484d", border: "rgba(229,72,77,0.42)", text: "Expensive, dramatic, and exactly what repeated wall thunder eventually deserves.", verdict: "Verdict: for homes where diplomacy has left the chat." },
+      { label: "CONTROL GROUP", name: "Buying Nothing", rating: "0.2", color: "#a89f8e", border: "rgba(244,239,230,0.12)", text: "No device, no logs, no source links, no court packet, and no credible reply to denial.", verdict: "Verdict: technically free, emotionally unaffordable." },
+    ];
 
     return {
       detectorList, kickLog, receiptBars,
+      socialReviews, productReviews,
       armed, triggered, shameStr, volume, sensitivity,
       statusText, statusKicker, statusColor, statusBg, statusBorder, bellAnim,
       bars, ringtoneList,
