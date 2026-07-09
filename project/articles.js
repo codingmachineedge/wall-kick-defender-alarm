@@ -46,7 +46,7 @@ const RAW = [
   ["behavior","Learned helplessness in the perpetually kicked","What happens to a person who asks for quiet three thousand nights in a row."],
   ["behavior","Do kickers dream? And do they dream of kicking?","A look inside the mind of the person on the loud side of the wall."],
   ["behavior","The psychology of 'the wall started it'","On the strange human tendency to blame architecture for one's own feet."],
-  ["behavior","Conditioning the kicker: what one loud ringtone teaches","Behavioral science says consequences must be immediate. A 2008 ringtone is nothing if not immediate."],
+  ["behavior","Conditioning the kicker: what one loud ringtone teaches","Behavioral science says consequences must be immediate. A 2008 Nokia ringtone is nothing if not immediate."],
   ["behavior","Birth order and the propensity to kick: new data","Early findings suggest the wall is simply a middle child's canvas."],
 
   ["seismology","The thunderous walk: when footsteps hit the Richter scale","'Walk quieter' has a 0% documented success rate. We measured what one heavy step does to a house."],
