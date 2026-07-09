@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ isPara }}" hint-placeholder-val="{{ true }}">
+  <p style="font-family:Newsreader,serif;font-size:clamp(18px,2.2vw,21px);line-height:1.72;color:#e4ddce;margin:0 0 26px;">{{ text }}</p>
+</sc-if>
+<sc-if value="{{ isQuote }}" hint-placeholder-val="{{ false }}">
+  <blockquote style="margin:36px 0;padding:8px 0 8px 28px;border-left:3px solid #f0921f;font-family:Newsreader,serif;font-style:italic;font-size:clamp(22px,3vw,30px);line-height:1.35;color:#f4efe6;">{{ text }}</blockquote>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const b = this.props.block || {};
+    return { isPara: b.t === 'p', isQuote: b.t === 'quote', text: b.v || '' };
+  }
+}
+</script>
+</body>
+</html>

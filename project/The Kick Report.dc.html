@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #14110d; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  a { color: #f4efe6; text-decoration: none; }
+  a:hover { color: #ffb14d; }
+  ::selection { background: #f0921f; color: #14110d; }
+  @keyframes tkr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;color:#f4efe6;background:#14110d;max-width:100%;overflow-x:hidden;">
+
+  <!-- MASTHEAD -->
+  <header style="border-bottom:3px double rgba(244,239,230,0.25);">
+    <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;">
+      <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
+      <span style="color:#7d7566;letter-spacing:0.12em;">INDEPENDENT SLEEP JOURNALISM · {{ count }} DISPATCHES</span>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:20px clamp(16px,4vw,36px) 24px;text-align:center;border-top:1px solid rgba(244,239,230,0.08);">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.34em;color:#f0921f;margin-bottom:12px;">EST. 3:47 AM · VOL. MMXXVI</div>
+      <h1 style="font-size:clamp(40px,9vw,110px);line-height:0.86;font-weight:900;letter-spacing:-0.035em;margin:0;">THE KICK REPORT</h1>
+      <div style="font-family:Newsreader,serif;font-style:italic;font-size:clamp(15px,2vw,21px);color:#a89f8e;margin-top:12px;">All the sleep that's fit to lose.</div>
+      <div style="max-width:600px;margin:22px auto 0;position:relative;text-align:left;">
+        <div style="display:flex;align-items:center;gap:10px;background:#1a1610;border:1px solid rgba(244,239,230,0.16);border-radius:13px;padding:5px 5px 5px 18px;">
+          <span style="font-size:19px;color:#7d7566;">⌕</span>
+          <input value="{{ query }}" onInput="{{ onInput }}" onFocus="{{ onFocus }}" onKeyDown="{{ onKey }}" placeholder="Search 100 dispatches…" spellcheck="false" style="flex:1;background:transparent;border:none;outline:none;color:#f4efe6;font-family:Archivo;font-size:16px;font-weight:600;padding:11px 0;min-width:0;">
+          <button onClick="{{ onGo }}" style="background:#f0921f;color:#14110d;border:none;border-radius:9px;padding:11px 18px;font-family:Archivo;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;">Search</button>
+        </div>
+        <sc-if value="{{ showSug }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:calc(100% + 6px);left:0;right:0;background:#1a1610;border:1px solid rgba(244,239,230,0.14);border-radius:12px;overflow:hidden;z-index:30;box-shadow:0 30px 70px rgba(0,0,0,0.6);">
+            <sc-for list="{{ suggestions }}" as="s" hint-placeholder-count="5">
+              <a href="{{ s.href }}" style="display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid rgba(244,239,230,0.06);color:#f4efe6;">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:{{ s.sectionColor }};flex-shrink:0;width:82px;">{{ s.sectionLabel }}</span>
+                <span style="font-size:15px;font-weight:700;line-height:1.2;">{{ s.title }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKING TICKER -->
+  <div style="background:#e5484d;color:#14110d;padding:11px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #14110d;">
+    <div style="display:inline-block;animation:tkr 46s linear infinite;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.02em;">
+      <span style="padding:0 22px;">⚠ BREAKING: Structural review finds sustained wall-kicking can compromise load-bearing integrity — "too many kicks can bring a building down" ✦ Acoustic study: not even the deep-bored platforms of Line 5 Eglinton could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ Apology deficit widens for 41st consecutive night ✦ ⚠ BREAKING: Structural review finds sustained wall-kicking can compromise load-bearing integrity — "too many kicks can bring a building down" ✦ Acoustic study: not even the deep-bored platforms of Line 5 Eglinton could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ Apology deficit widens for 41st consecutive night ✦ </span>
+    </div>
+  </div>
+
+  <sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+  <div>
+
+  <!-- LEAD -->
+  <section style="padding:clamp(36px,5vw,64px) clamp(16px,4vw,36px);border-bottom:1px solid rgba(244,239,230,0.12);">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,3.5vw,52px);align-items:start;">
+      <a href="{{ lead.href }}" style="display:block;">
+        <img src="{{ lead.coverUrl }}" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:14px;display:block;margin-bottom:22px;">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#e5484d;margin-bottom:14px;">{{ lead.sectionLabel }} · LEAD STORY</div>
+        <h2 style="font-size:clamp(32px,4.6vw,54px);line-height:0.98;font-weight:900;letter-spacing:-0.02em;margin:0;color:#f4efe6;">{{ lead.title }}</h2>
+        <p style="font-family:Newsreader,serif;font-size:clamp(18px,2.2vw,23px);line-height:1.5;color:#d8d0c2;margin:20px 0 16px;">{{ lead.dek }}</p>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;color:#7d7566;">By {{ lead.author }} · {{ lead.date }} · {{ lead.read }}</div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:22px;border-left:1px solid rgba(244,239,230,0.1);padding-left:clamp(0px,2.5vw,36px);">
+        <sc-for list="{{ rail }}" as="a" hint-placeholder-count="3">
+          <a href="{{ a.href }}" style="display:block;padding-bottom:20px;border-bottom:1px solid rgba(244,239,230,0.08);">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:{{ a.sectionColor }};margin-bottom:9px;">{{ a.sectionLabel }}</div>
+            <div style="font-size:22px;font-weight:800;line-height:1.12;color:#f4efe6;">{{ a.title }}</div>
+            <p style="font-family:Newsreader,serif;font-size:16px;line-height:1.45;color:#a89f8e;margin:8px 0 8px;">{{ a.dek }}</p>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ a.date }} · {{ a.read }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD GEAR (invented devices) -->
+  <section style="padding:clamp(40px,5vw,72px) clamp(16px,4vw,36px);background:#100e0a;border-bottom:1px solid rgba(244,239,230,0.12);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-0.01em;margin:0;">WKD Field Gear</h3>
+        <span style="font-family:Newsreader,serif;font-style:italic;font-size:18px;color:#a89f8e;">tested devices for silencing the thunderous walk</span>
+      </div>
+      <p style="font-family:Newsreader,serif;font-size:17px;color:#7d7566;margin:0 0 30px;max-width:640px;">Independently rated in our lab (a bedroom). Kicks are for the Defender; these are for the footsteps that shake the house like thunder.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px;">
+        <div style="background:#1e1a14;border:1px solid rgba(142,198,63,0.28);border-radius:14px;padding:24px;">
+          <div style="font-size:34px;margin-bottom:14px;">🧦</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:6px;">GaitMuffler™ Boots</div>
+          <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.5;color:#a89f8e;margin:0 0 12px;">Weighted memory-gel soles that absorb up to 94% of a heel-strike before it reaches the joists.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">RATED 4.6 · THUNDER ↓ 94%</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(142,198,63,0.28);border-radius:14px;padding:24px;">
+          <div style="font-size:34px;margin-bottom:14px;">🟫</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:6px;">ThunderTrap Floor Pads</div>
+          <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.5;color:#a89f8e;margin:0 0 12px;">Interlocking sub-floor dampeners that catch a footstep's shockwave before it becomes a building-wide event.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">RATED 4.3 · RICHTER ↓ 3.8</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(142,198,63,0.28);border-radius:14px;padding:24px;">
+          <div style="font-size:34px;margin-bottom:14px;">📡</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:6px;">Harmonic Counter-Step Emitter</div>
+          <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.5;color:#a89f8e;margin:0 0 12px;">Fires an inverse vibration into the wall to cancel each footstep — noise-cancelling headphones, but for your whole house.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">RATED 4.8 · PHASE-LOCKED</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(142,198,63,0.28);border-radius:14px;padding:24px;">
+          <div style="font-size:34px;margin-bottom:14px;">🏗️</div>
+          <div style="font-size:20px;font-weight:800;margin-bottom:6px;">SubFloor Dampener X1</div>
+          <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.5;color:#a89f8e;margin:0 0 12px;">Structural-grade isolation mounts, originally engineered for deep transit platforms. Retrofitted for one very heavy walker.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">RATED 4.9 · TRANSIT-SPEC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TIMELINE (social complaints) -->
+  <section style="padding:clamp(40px,5vw,72px) clamp(16px,4vw,36px);border-bottom:1px solid rgba(244,239,230,0.12);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
+        <h3 style="font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-0.01em;margin:0;">The Timeline</h3>
+        <span style="font-family:Newsreader,serif;font-style:italic;font-size:18px;color:#a89f8e;">the internet is not sleeping either</span>
+      </div>
+      <p style="font-family:Newsreader,serif;font-size:17px;color:#7d7566;margin:0 0 28px;max-width:640px;">Unfiltered dispatches from the small hours. Timestamps are, tellingly, all after midnight.</p>
+      <div style="columns:280px;column-gap:16px;">
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#e5484d;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">U</span><div><div style="font-weight:800;font-size:15px;">underslept_again</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@underslept · 2:14 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">night 4 in a row his wall kicks launched me out of the BEST dream i've had in months. i will not recover 😭</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 1.2k · ⟳ 340</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#f0921f;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">D</span><div><div style="font-weight:800;font-size:15px;">drywall_survivor</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@drywallsurv · 3:02 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">he swears he's "just walking" but the whole house shakes like THUNDER. it's 3am. i have a meeting at 9.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 844 · ⟳ 210</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(142,198,63,0.3);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#8ec63f;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">R</span><div><div style="font-weight:800;font-size:15px;">remstage_victim</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@remstage · 1:47 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">there should genuinely be a device for this. i'd pay literally anything for one uninterrupted night.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 3.4k · ⟳ 1.1k</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#c9a24b;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">T</span><div><div style="font-weight:800;font-size:15px;">tired.tenant</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@tiredtenant · 4:11 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">sleep quality: 12%. cause of death: the shared bedroom wall.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 2.1k · ⟳ 560</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#8a7bd8;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">N</span><div><div style="font-weight:800;font-size:15px;">noctprofessor</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@noctprof · 3:49 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">woke up at 3:47 exactly. again. my body has developed a wall-kick alarm and it is more reliable than my actual alarm.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 990 · ⟳ 288</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#4bb3c9;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">C</span><div><div style="font-weight:800;font-size:15px;">cantsleepclub</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@cantsleep · 2:33 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">the audacity to kick the wall AND say "that wasn't me". sir the sensor logs beg to differ.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 5.6k · ⟳ 2.3k</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#d87b9c;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">D</span><div><div style="font-weight:800;font-size:15px;">dreamthief_report</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@dreamthief · 1:09 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">i was about to win the lottery in my dream. then: THUD. gone. i will never know how rich i was.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 1.8k · ⟳ 470</div>
+        </div>
+        <div style="break-inside:avoid;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:20px 22px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px;"><span style="width:38px;height:38px;border-radius:50%;background:#9c9c9c;color:#14110d;display:flex;align-items:center;justify-content:center;font-weight:900;">Q</span><div><div style="font-weight:800;font-size:15px;">quiet_hours_pls</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">@quiethours · 3:20 AM</div></div></div>
+          <p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#e4ddce;">asked him to walk softer for the 400th time. compliance rate holding steady at 0%.</p>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">♥ 720 · ⟳ 150</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION BLOCKS -->
+  <section style="padding:clamp(24px,3vw,44px) clamp(16px,4vw,36px) clamp(48px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(44px,5vw,72px);">
+      <sc-for list="{{ sectionBlocks }}" as="block" hint-placeholder-count="6">
+        <div>
+          <div style="display:flex;align-items:center;gap:16px;border-bottom:2px solid {{ block.color }};padding-bottom:12px;margin-bottom:26px;">
+            <h3 style="font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:-0.01em;margin:0;color:{{ block.color }};">{{ block.label }}</h3>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;">
+            <sc-for list="{{ block.articles }}" as="a" hint-placeholder-count="10">
+              <a href="{{ a.href }}" style="display:flex;flex-direction:column;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;overflow:hidden;color:#f4efe6;">
+                <img src="{{ a.coverUrl }}" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+                <div style="padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;">
+                  <div style="font-size:20px;font-weight:800;line-height:1.14;margin-bottom:10px;">{{ a.title }}</div>
+                  <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.45;color:#a89f8e;margin:0 0 16px;flex:1;">{{ a.dek }}</p>
+                  <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ a.author }} · {{ a.read }}</div>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:clamp(52px,7vw,100px) clamp(16px,4vw,36px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.12);text-align:center;">
+    <div style="max-width:760px;margin:0 auto;">
+      <h2 style="font-size:clamp(32px,6vw,60px);line-height:0.96;font-weight:900;letter-spacing:-0.02em;margin:0;">Tired of reading about it?</h2>
+      <p style="font-family:Newsreader,serif;font-size:clamp(18px,2.2vw,23px);line-height:1.55;color:#d8d0c2;margin:22px auto 32px;">The research is conclusive, extensive, and entirely ours. The wall will not defend itself.</p>
+      <a href="Wall Kick Defender.dc.html" style="display:inline-block;background:#f0921f;color:#14110d;padding:20px 38px;border-radius:12px;font-weight:800;font-size:20px;">Meet the Wall Kick Defender →</a>
+    </div>
+  </section>
+
+  </div>
+  </sc-if>
+
+  <footer style="padding:36px clamp(16px,4vw,36px);border-top:1px solid rgba(244,239,230,0.12);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:'Space Mono',monospace;font-size:12.5px;color:#7d7566;">
+      <div style="color:#a89f8e;font-weight:700;">THE KICK REPORT</div>
+      <div style="max-width:600px;text-align:right;line-height:1.5;">A publication of the WKD Research Institute (a folding table). Every statistic herein is presented with total confidence. © MMXXVI.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { loaded: false, query: '', focused: false };
+
+  async componentDidMount() {
+    try {
+      const m = await import('./articles.js');
+      this.ARTICLES = m.ARTICLES;
+      this.SECTIONS = m.SECTIONS;
+      this.setState({ loaded: true });
+    } catch (e) { console.error('article load failed', e); }
+  }
+
+  match(q) {
+    const n = q.trim().toLowerCase();
+    if (!n) return [];
+    const S = this.SECTIONS || {};
+    return (this.ARTICLES || []).filter(a => {
+      const hay = (a.title + ' ' + a.dek + ' ' + ((S[a.section] || {}).label || '')).toLowerCase();
+      return hay.includes(n);
+    }).sort((a, b) => {
+      const at = a.title.toLowerCase().includes(n) ? 0 : 1;
+      const bt = b.title.toLowerCase().includes(n) ? 0 : 1;
+      return at - bt;
+    });
+  }
+
+  go = () => {
+    const q = this.state.query.trim();
+    location.href = 'Search.dc.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+  };
+  onInput = (e) => this.setState({ query: e.target.value, focused: true });
+  onFocus = () => this.setState({ focused: true });
+  onKey = (e) => { if (e.key === 'Enter') this.go(); };
+
+  renderVals() {
+    const A = this.ARTICLES || [];
+    const S = this.SECTIONS || {};
+    const deco = a => ({
+      ...a,
+      href: `Story ${String(a.id).padStart(3, '0')}.dc.html`,
+      coverUrl: `images/cover-${String(a.cover).padStart(2, '0')}.png`,
+      sectionLabel: (S[a.section] || {}).label || '',
+      sectionColor: (S[a.section] || {}).color || '#f0921f',
+    });
+    const order = ['crisis','sleep','behavior','seismology','materials','tech','lifestyle','world','opinion','business'];
+    const sectionBlocks = order.filter(k => S[k]).map(k => ({
+      key: k,
+      label: S[k].label,
+      color: S[k].color,
+      articles: A.filter(x => x.section === k).map(deco),
+    }));
+    const suggestions = (this.state.focused && this.state.query.trim())
+      ? this.match(this.state.query).slice(0, 6).map(deco) : [];
+    return {
+      loaded: this.state.loaded,
+      count: A.length,
+      lead: A[0] ? deco(A[0]) : null,
+      rail: A.slice(1, 4).map(deco),
+      sectionBlocks,
+      query: this.state.query,
+      onInput: this.onInput, onFocus: this.onFocus, onKey: this.onKey, onGo: this.go,
+      showSug: suggestions.length > 0, suggestions,
+    };
+  }
+}
+</script>
+</body>
+</html>

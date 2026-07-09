@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #14110d; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  a { color: #f0921f; text-decoration: none; }
+  a:hover { color: #ffb14d; }
+  ::selection { background: #f0921f; color: #14110d; }
+  input::placeholder, textarea::placeholder { color: #6b6558; }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;color:#f4efe6;background:#14110d;max-width:100%;min-height:100vh;overflow-x:hidden;">
+
+  <header style="border-bottom:1px solid rgba(244,239,230,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:14px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;">
+      <a href="The Kick Report.dc.html" style="color:#a89f8e;">← The Kick Report</a>
+      <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">Wall Kick Defender</a>
+    </div>
+  </header>
+
+  <section style="max-width:960px;margin:0 auto;padding:clamp(36px,5vw,64px) clamp(16px,4vw,36px) 0;">
+    <div style="font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#8ec63f;margin-bottom:18px;">SEARCH THE ARCHIVE · {{ total }} DISPATCHES</div>
+
+    <div style="position:relative;">
+      <div style="display:flex;align-items:center;gap:12px;background:#1a1610;border:2px solid #f0921f;border-radius:16px;padding:6px 6px 6px 20px;">
+        <span style="font-size:22px;color:#7d7566;">{{ searchGlyph }}</span>
+        <input value="{{ query }}" onInput="{{ onInput }}" onKeyDown="{{ onKey }}" onFocus="{{ onFocus }}" placeholder="{{ inputPlaceholder }}" spellcheck="false" style="flex:1;background:transparent;border:none;outline:none;color:#f4efe6;font-family:{{ inputFont }};font-size:clamp(17px,2.2vw,22px);font-weight:600;padding:14px 0;min-width:0;">
+        <button onClick="{{ onSubmit }}" style="background:#f0921f;color:#14110d;border:none;border-radius:12px;padding:14px 24px;font-family:Archivo;font-weight:800;font-size:16px;cursor:pointer;white-space:nowrap;">Search</button>
+      </div>
+      <sc-if value="{{ showSug }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:calc(100% + 8px);left:0;right:0;background:#1a1610;border:1px solid rgba(244,239,230,0.14);border-radius:14px;overflow:hidden;z-index:20;box-shadow:0 30px 70px rgba(0,0,0,0.6);">
+          <sc-for list="{{ suggestions }}" as="s" hint-placeholder-count="5">
+            <a href="{{ s.href }}" style="display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(244,239,230,0.06);color:#f4efe6;">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:{{ s.sectionColor }};flex-shrink:0;width:92px;">{{ s.sectionLabel }}</span>
+              <span style="font-size:16px;font-weight:700;line-height:1.2;">{{ s.title }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- CONTROLS -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px;">
+      <button onClick="{{ onToggleRegex }}" style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:10px 16px;border-radius:100px;cursor:pointer;background:{{ regexChip.bg }};color:{{ regexChip.color }};border:1px solid {{ regexChip.border }};">.* Regex mode</button>
+      <button onClick="{{ onToggleCase }}" style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:10px 16px;border-radius:100px;cursor:pointer;background:{{ caseChip.bg }};color:{{ caseChip.color }};border:1px solid {{ caseChip.border }};">Aa Case-insensitive</button>
+      <button onClick="{{ onToggleWord }}" style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:10px 16px;border-radius:100px;cursor:pointer;background:{{ wordChip.bg }};color:{{ wordChip.color }};border:1px solid {{ wordChip.border }};">\b Whole word</button>
+      <button onClick="{{ onOpenBuilder }}" style="display:inline-flex;align-items:center;gap:8px;font-family:Archivo;font-size:14px;font-weight:800;padding:10px 18px;border-radius:100px;cursor:pointer;background:#8ec63f;color:#14110d;border:none;">⚙ Regex Builder</button>
+    </div>
+
+    <!-- SCOPE + SECTION FILTERS -->
+    <div style="margin-top:26px;padding-top:24px;border-top:1px solid rgba(244,239,230,0.1);">
+      <div style="display:flex;flex-wrap:wrap;gap:20px 40px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:#7d7566;margin-bottom:12px;">SEARCH IN</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ scopeChips }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.onToggle }}" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }};">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:22px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.16em;color:#7d7566;margin-bottom:12px;">FILTER BY SECTION {{ sectionHint }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ sectionChips }}" as="c" hint-placeholder-count="10">
+            <button onClick="{{ c.onToggle }}" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:8px 14px;border-radius:100px;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }};">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-family:'Space Mono',monospace;font-size:15px;color:#a89f8e;margin-top:26px;">{{ resultLabel }}</div>
+    <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:12px;padding:14px 18px;background:rgba(229,72,77,0.12);border:1px solid rgba(229,72,77,0.4);border-radius:12px;font-family:'Space Mono',monospace;font-size:14px;color:#e5484d;">⚠ Invalid regular expression: {{ errorMsg }}</div>
+    </sc-if>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="max-width:1180px;margin:0 auto;padding:clamp(26px,3.5vw,40px) clamp(16px,4vw,36px) clamp(56px,8vw,100px);">
+    <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;">
+        <sc-for list="{{ results }}" as="a" hint-placeholder-count="9">
+          <a href="{{ a.href }}" style="display:flex;flex-direction:column;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;overflow:hidden;color:#f4efe6;">
+            <img src="{{ a.coverUrl }}" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+            <div style="padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;">
+              <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;color:{{ a.sectionColor }};margin-bottom:9px;">{{ a.sectionLabel }}</div>
+              <div style="font-size:20px;font-weight:800;line-height:1.14;margin-bottom:10px;">{{ a.title }}</div>
+              <p style="font-family:Newsreader,serif;font-size:15px;line-height:1.45;color:#a89f8e;margin:0 0 16px;flex:1;">{{ a.dek }}</p>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">{{ a.author }} · {{ a.read }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:70px 20px;">
+        <div style="font-size:56px;margin-bottom:20px;">🔦</div>
+        <h2 style="font-size:clamp(28px,4vw,40px);font-weight:900;margin:0 0 14px;">Nothing found</h2>
+        <p style="font-family:Newsreader,serif;font-size:20px;color:#a89f8e;margin:0 auto;max-width:460px;">No dispatches matched that. Try loosening a filter, or search "thunder", "dream", or "drywall".</p>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- REGEX BUILDER DIALOG -->
+  <sc-if value="{{ builderOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:rgba(6,5,3,0.72);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,4vw,56px) 16px;overflow:auto;">
+      <div style="width:100%;max-width:860px;background:#1a1610;border:1px solid rgba(244,239,230,0.16);border-radius:20px;box-shadow:0 50px 120px rgba(0,0,0,0.7);overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid rgba(244,239,230,0.1);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:34px;height:34px;border-radius:9px;background:#8ec63f;color:#14110d;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;">⚙</span>
+            <div>
+              <div style="font-size:22px;font-weight:900;line-height:1;">Regex Builder</div>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;margin-top:3px;">click a piece to insert it at your cursor</div>
+            </div>
+          </div>
+          <button onClick="{{ onBuilderClose }}" style="background:transparent;border:1px solid rgba(244,239,230,0.2);color:#a89f8e;width:38px;height:38px;border-radius:10px;font-size:18px;cursor:pointer;">✕</button>
+        </div>
+
+        <div style="padding:24px 26px;">
+          <!-- PATTERN FIELD -->
+          <div style="display:flex;align-items:stretch;gap:0;background:#14110d;border:1px solid {{ builderBorder }};border-radius:12px;overflow:hidden;font-family:'Space Mono',monospace;">
+            <span style="display:flex;align-items:center;padding:0 12px;color:#7d7566;font-size:18px;background:rgba(244,239,230,0.04);">/</span>
+            <textarea ref="{{ patternRef }}" value="{{ pattern }}" onInput="{{ onPattern }}" spellcheck="false" rows="2" placeholder="your pattern builds here…" style="flex:1;background:transparent;border:none;outline:none;resize:vertical;color:#8ec63f;font-family:'Space Mono',monospace;font-size:16px;line-height:1.5;padding:12px 10px;min-width:0;"></textarea>
+            <span style="display:flex;align-items:center;padding:0 12px;color:#7d7566;font-size:16px;background:rgba(244,239,230,0.04);white-space:nowrap;">/{{ flagStr }}</span>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:{{ builderStatusColor }};margin-top:10px;">{{ builderStatus }}</div>
+
+          <!-- FLAGS -->
+          <div style="margin-top:20px;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#7d7566;margin-bottom:10px;">FLAGS</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ flagChips }}" as="f" hint-placeholder-count="4">
+                <button onClick="{{ f.onToggle }}" title="{{ f.title }}" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;background:{{ f.bg }};color:{{ f.color }};border:1px solid {{ f.border }};">{{ f.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- QUICK PATTERNS -->
+          <div style="margin-top:20px;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#7d7566;margin-bottom:10px;">QUICK PATTERNS</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ quickTokens }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.onInsert }}" title="{{ t.title }}" style="font-family:Archivo;font-size:13px;font-weight:700;padding:9px 14px;border-radius:8px;cursor:pointer;background:#241f16;color:#e4ddce;border:1px solid rgba(142,198,63,0.35);">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- TOKEN PALETTE -->
+          <div style="margin-top:8px;">
+            <sc-for list="{{ tokenGroups }}" as="g" hint-placeholder-count="6">
+              <div style="margin-top:18px;">
+                <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#7d7566;margin-bottom:10px;">{{ g.title }}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ g.tokens }}" as="t" hint-placeholder-count="6">
+                    <button onClick="{{ t.onInsert }}" title="{{ t.title }}" style="font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:9px 13px;border-radius:8px;cursor:pointer;background:#241f16;color:#f4efe6;border:1px solid rgba(244,239,230,0.14);min-width:44px;">{{ t.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- LITERAL INSERT -->
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(244,239,230,0.1);">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#7d7566;margin-bottom:10px;">INSERT LITERAL TEXT (auto-escaped)</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <input value="{{ literal }}" onInput="{{ onLiteral }}" onKeyDown="{{ onLiteralKey }}" placeholder="e.g. 3 AM  →  3\ AM" spellcheck="false" style="flex:1;min-width:180px;background:#14110d;border:1px solid rgba(244,239,230,0.16);border-radius:10px;color:#f4efe6;font-family:'Space Mono',monospace;font-size:14px;padding:11px 14px;outline:none;">
+              <button onClick="{{ onInsertLiteral }}" style="background:#241f16;color:#e4ddce;border:1px solid rgba(244,239,230,0.2);border-radius:10px;padding:11px 18px;font-family:Archivo;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;">Insert literal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:20px 26px;border-top:1px solid rgba(244,239,230,0.1);background:#161209;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button onClick="{{ onBuilderClear }}" style="background:transparent;color:#a89f8e;border:1px solid rgba(244,239,230,0.2);border-radius:10px;padding:12px 18px;font-family:Archivo;font-weight:700;font-size:15px;cursor:pointer;">Clear</button>
+            <button onClick="{{ onBuilderCopy }}" style="background:transparent;color:#a89f8e;border:1px solid rgba(244,239,230,0.2);border-radius:10px;padding:12px 18px;font-family:Archivo;font-weight:700;font-size:15px;cursor:pointer;">{{ copyLabel }}</button>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button onClick="{{ onBuilderClose }}" style="background:transparent;color:#a89f8e;border:1px solid rgba(244,239,230,0.2);border-radius:10px;padding:12px 20px;font-family:Archivo;font-weight:700;font-size:15px;cursor:pointer;">Close</button>
+            <button onClick="{{ onBuilderApply }}" style="background:#f0921f;color:#14110d;border:none;border-radius:10px;padding:12px 24px;font-family:Archivo;font-weight:800;font-size:15px;cursor:pointer;">Insert &amp; Search →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  patternRef = React.createRef();
+  state = {
+    loaded: false, query: '', submitted: '', focused: false,
+    useRegex: false, caseInsensitive: true, wholeWord: false,
+    inTitle: true, inDek: true, inSection: true,
+    sections: [],
+    builderOpen: false, pattern: '', literal: '',
+    flags: { i: true, m: false, s: false, u: false },
+    copied: false,
+  };
+
+  async componentDidMount() {
+    try {
+      const m = await import('./articles.js');
+      this.ARTICLES = m.ARTICLES;
+      this.SECTIONS = m.SECTIONS;
+      const p = new URLSearchParams(location.search);
+      const q = p.get('q') || '';
+      const rx = p.get('regex') === '1';
+      this.setState({ loaded: true, query: q, submitted: q, useRegex: rx, pattern: rx ? q : '' });
+    } catch (e) { console.error('search load failed', e); this.setState({ loaded: true }); }
+  }
+
+  esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  buildRegex(pattern, flagObj) {
+    const fs = Object.keys(flagObj).filter(k => flagObj[k]).join('');
+    try { return { re: new RegExp(pattern, fs), error: null }; }
+    catch (e) { return { re: null, error: e.message }; }
+  }
+
+  hay(a) {
+    const S = this.SECTIONS || {};
+    const parts = [];
+    if (this.state.inTitle) parts.push(a.title);
+    if (this.state.inDek) parts.push(a.dek);
+    if (this.state.inSection) parts.push((S[a.section] || {}).label || '');
+    return parts.join(' \u241f ');
+  }
+
+  // returns { list, error }
+  runMatch(str, opts) {
+    const base = (this.ARTICLES || []).filter(a => opts.sections.length === 0 || opts.sections.includes(a.section));
+    if (!str || !str.trim()) return { list: [], error: null };
+    if (opts.useRegex) {
+      const { re, error } = this.buildRegex(str, this.state.flags);
+      if (error) return { list: [], error };
+      const list = base.filter(a => { re.lastIndex = 0; return re.test(this.hay(a)); });
+      return { list, error: null };
+    }
+    if (opts.wholeWord) {
+      const { re } = this.buildRegex('\\b' + this.esc(str.trim()) + '\\b', { i: opts.caseInsensitive });
+      const list = base.filter(a => { re.lastIndex = 0; return re.test(this.hay(a)); });
+      return { list, error: null };
+    }
+    const n = opts.caseInsensitive ? str.trim().toLowerCase() : str.trim();
+    const list = base.filter(a => { let h = this.hay(a); if (opts.caseInsensitive) h = h.toLowerCase(); return h.includes(n); });
+    return { list, error: null };
+  }
+
+  deco = (x) => {
+    const S = this.SECTIONS || {};
+    return {
+      ...x,
+      href: `Story ${String(x.id).padStart(3, '0')}.dc.html`,
+      coverUrl: `images/cover-${String(x.cover).padStart(2, '0')}.png`,
+      sectionLabel: (S[x.section] || {}).label || '',
+      sectionColor: (S[x.section] || {}).color || '#f0921f',
+    };
+  };
+
+  opts() { return { useRegex: this.state.useRegex, caseInsensitive: this.state.caseInsensitive, wholeWord: this.state.wholeWord, sections: this.state.sections }; }
+
+  commit() {
+    const q = this.state.query;
+    try { history.replaceState(null, '', '?q=' + encodeURIComponent(q) + (this.state.useRegex ? '&regex=1' : '')); } catch (e) {}
+    this.setState({ submitted: q, focused: false });
+  }
+
+  onInput = (e) => this.setState({ query: e.target.value, focused: true });
+  onFocus = () => this.setState({ focused: true });
+  onSubmit = () => this.commit();
+  onKey = (e) => { if (e.key === 'Enter') this.commit(); };
+
+  onToggleRegex = () => this.setState(s => ({ useRegex: !s.useRegex }), () => this.commit());
+  onToggleCase = () => this.setState(s => ({ caseInsensitive: !s.caseInsensitive }));
+  onToggleWord = () => this.setState(s => ({ wholeWord: !s.wholeWord }));
+  toggleScope = (k) => () => this.setState(s => ({ [k]: !s[k] }));
+  toggleSection = (k) => () => this.setState(s => ({ sections: s.sections.includes(k) ? s.sections.filter(x => x !== k) : [...s.sections, k] }));
+
+  // ---- builder ----
+  onOpenBuilder = () => this.setState(s => ({ builderOpen: true, pattern: s.useRegex ? (s.pattern || s.query) : s.pattern }));
+  onBuilderClose = () => this.setState({ builderOpen: false });
+  onPattern = (e) => this.setState({ pattern: e.target.value, copied: false });
+  toggleFlag = (k) => () => this.setState(s => ({ flags: { ...s.flags, [k]: !s.flags[k] } }));
+  onLiteral = (e) => this.setState({ literal: e.target.value });
+  onLiteralKey = (e) => { if (e.key === 'Enter') this.onInsertLiteral(); };
+  onInsertLiteral = () => { const t = this.esc(this.state.literal); this.setState({ literal: '' }); this.insertRaw(t, 0); };
+  onBuilderClear = () => this.setState({ pattern: '', copied: false });
+  onBuilderCopy = () => { try { navigator.clipboard.writeText(this.state.pattern); } catch (e) {} this.setState({ copied: true }); };
+  onBuilderApply = () => {
+    const p = this.state.pattern;
+    this.setState({ useRegex: true, query: p, submitted: p, builderOpen: false, focused: false }, () => this.commit());
+  };
+
+  insertRaw(ins, back) {
+    const el = this.patternRef.current;
+    const p = this.state.pattern;
+    let a = p.length, b = p.length;
+    if (el && typeof el.selectionStart === 'number') { a = el.selectionStart; b = el.selectionEnd; }
+    const open = ins.slice(0, ins.length - back);
+    const close = ins.slice(ins.length - back);
+    const sel = p.slice(a, b);
+    let np, caret;
+    if (sel && back > 0) { np = p.slice(0, a) + open + sel + close + p.slice(b); caret = a + open.length + sel.length + close.length; }
+    else { np = p.slice(0, a) + ins + p.slice(b); caret = back > 0 ? a + open.length : a + ins.length; }
+    this.setState({ pattern: np, copied: false }, () => {
+      const el2 = this.patternRef.current;
+      if (el2) { el2.focus(); try { el2.setSelectionRange(caret, caret); } catch (e) {} }
+    });
+  }
+  ins = (v, back) => () => this.insertRaw(v, back || 0);
+
+  chip(active, activeColor) {
+    return active
+      ? { bg: activeColor || '#f0921f', color: '#14110d', border: activeColor || '#f0921f' }
+      : { bg: 'transparent', color: '#a89f8e', border: 'rgba(244,239,230,0.2)' };
+  }
+
+  renderVals() {
+    if (!this.state.loaded) return { total: '', showSug: false, hasResults: false, noResults: false, hasError: false, builderOpen: false, results: [], suggestions: [], resultLabel: 'Loading the archive…', query: this.state.query, searchGlyph: '\u2315', inputFont: 'Archivo', inputPlaceholder: '', sectionHint: '' };
+    const S = this.SECTIONS || {};
+    const st = this.state;
+
+    // results from committed query
+    const res = this.runMatch(st.submitted, this.opts());
+    const results = res.list.map(this.deco);
+    const hasQuery = st.submitted.trim().length > 0;
+
+    // live suggestions (plain, only when not regex)
+    let suggestions = [];
+    if (st.focused && !st.useRegex && st.query.trim()) {
+      suggestions = this.runMatch(st.query, { ...this.opts(), useRegex: false }).list.slice(0, 6).map(this.deco);
+    }
+
+    let resultLabel;
+    if (!hasQuery) resultLabel = st.useRegex ? 'Enter a regular expression, then press Enter.' : 'Type to search all dispatches, then press Enter.';
+    else if (res.error) resultLabel = 'Regex error \u2014 fix the pattern to see matches.';
+    else resultLabel = `${results.length} result${results.length === 1 ? '' : 's'} for ${st.useRegex ? '/' + st.submitted + '/' : '\u201c' + st.submitted + '\u201d'}`;
+
+    // section chips
+    const order = ['crisis','sleep','behavior','seismology','materials','tech','lifestyle','world','opinion','business'];
+    const sectionChips = order.filter(k => S[k]).map(k => {
+      const active = st.sections.includes(k);
+      const c = this.chip(active, S[k].color);
+      return { label: S[k].label, onToggle: this.toggleSection(k), bg: c.bg, color: c.color, border: c.border };
+    });
+
+    const scopeDefs = [['inTitle', 'Title'], ['inDek', 'Summary'], ['inSection', 'Section']];
+    const scopeChips = scopeDefs.map(([k, label]) => {
+      const c = this.chip(st[k], '#8ec63f');
+      return { label, onToggle: this.toggleScope(k), bg: c.bg, color: c.color, border: c.border };
+    });
+
+    // builder preview
+    const bp = this.buildRegex(st.pattern, st.flags);
+    let builderStatus, builderStatusColor, builderBorder;
+    if (!st.pattern) { builderStatus = 'Build a pattern using the pieces below, or type your own.'; builderStatusColor = '#7d7566'; builderBorder = 'rgba(244,239,230,0.16)'; }
+    else if (bp.error) { builderStatus = '\u2717 invalid: ' + bp.error; builderStatusColor = '#e5484d'; builderBorder = 'rgba(229,72,77,0.5)'; }
+    else {
+      const cnt = (this.ARTICLES || []).filter(a => { bp.re.lastIndex = 0; return bp.re.test(this.hay(a)); }).length;
+      builderStatus = '\u2713 valid \u00b7 matches ' + cnt + ' dispatch' + (cnt === 1 ? '' : 'es') + ' right now';
+      builderStatusColor = '#8ec63f'; builderBorder = 'rgba(142,198,63,0.5)';
+    }
+
+    const flagDefs = [['i', 'i · ignore case'], ['m', 'm · multiline'], ['s', 's · dotall'], ['u', 'u · unicode']];
+    const flagChips = flagDefs.map(([k, label]) => {
+      const c = this.chip(st.flags[k], '#8ec63f');
+      return { label, title: label, onToggle: this.toggleFlag(k), bg: c.bg, color: c.color, border: c.border };
+    });
+
+    const tokenGroups = [
+      { title: 'CHARACTER CLASSES', tokens: [
+        { label: '.', title: 'any character', onInsert: this.ins('.') },
+        { label: '\\d', title: 'digit 0-9', onInsert: this.ins('\\d') },
+        { label: '\\D', title: 'non-digit', onInsert: this.ins('\\D') },
+        { label: '\\w', title: 'word char', onInsert: this.ins('\\w') },
+        { label: '\\W', title: 'non-word char', onInsert: this.ins('\\W') },
+        { label: '\\s', title: 'whitespace', onInsert: this.ins('\\s') },
+        { label: '\\S', title: 'non-whitespace', onInsert: this.ins('\\S') },
+      ] },
+      { title: 'ANCHORS', tokens: [
+        { label: '^', title: 'start of line', onInsert: this.ins('^') },
+        { label: '$', title: 'end of line', onInsert: this.ins('$') },
+        { label: '\\b', title: 'word boundary', onInsert: this.ins('\\b') },
+        { label: '\\B', title: 'non-boundary', onInsert: this.ins('\\B') },
+      ] },
+      { title: 'QUANTIFIERS', tokens: [
+        { label: '*', title: 'zero or more', onInsert: this.ins('*') },
+        { label: '+', title: 'one or more', onInsert: this.ins('+') },
+        { label: '?', title: 'optional', onInsert: this.ins('?') },
+        { label: '*?', title: 'lazy zero+', onInsert: this.ins('*?') },
+        { label: '+?', title: 'lazy one+', onInsert: this.ins('+?') },
+        { label: '{n}', title: 'exactly n', onInsert: this.ins('{3}') },
+        { label: '{n,}', title: 'n or more', onInsert: this.ins('{2,}') },
+        { label: '{n,m}', title: 'between n and m', onInsert: this.ins('{2,5}') },
+      ] },
+      { title: 'GROUPS & ALTERNATION', tokens: [
+        { label: '( )', title: 'capture group', onInsert: this.ins('()', 1) },
+        { label: '(?: )', title: 'non-capturing group', onInsert: this.ins('(?:)', 1) },
+        { label: '(?<name> )', title: 'named group', onInsert: this.ins('(?<name>)', 1) },
+        { label: '|', title: 'alternation (or)', onInsert: this.ins('|') },
+      ] },
+      { title: 'CHARACTER SETS', tokens: [
+        { label: '[ ]', title: 'any one of', onInsert: this.ins('[]', 1) },
+        { label: '[^ ]', title: 'none of', onInsert: this.ins('[^]', 1) },
+        { label: '[a-z]', title: 'lowercase range', onInsert: this.ins('[a-z]') },
+        { label: '[A-Z]', title: 'uppercase range', onInsert: this.ins('[A-Z]') },
+        { label: '[0-9]', title: 'digit range', onInsert: this.ins('[0-9]') },
+      ] },
+      { title: 'LOOKAROUND', tokens: [
+        { label: '(?= )', title: 'positive lookahead', onInsert: this.ins('(?=)', 1) },
+        { label: '(?! )', title: 'negative lookahead', onInsert: this.ins('(?!)', 1) },
+        { label: '(?<= )', title: 'positive lookbehind', onInsert: this.ins('(?<=)', 1) },
+        { label: '(?<! )', title: 'negative lookbehind', onInsert: this.ins('(?<!)', 1) },
+      ] },
+    ];
+
+    const quickTokens = [
+      { label: 'starts with…', title: 'anchor to start', onInsert: this.ins('^') },
+      { label: 'ends with…', title: 'anchor to end', onInsert: this.ins('$') },
+      { label: 'whole word', title: '\\bword\\b', onInsert: this.ins('\\b\\b', 2) },
+      { label: 'any number', title: 'one or more digits', onInsert: this.ins('\\d+') },
+      { label: 'one of (a|b|c)', title: 'alternation group', onInsert: this.ins('(a|b|c)', 1) },
+      { label: 'kick|thunder|dream', title: 'the greatest hits', onInsert: this.ins('(kick|thunder|dream)', 1) },
+    ];
+
+    return {
+      total: (this.ARTICLES || []).length,
+      query: st.query,
+      searchGlyph: '\u2315',
+      inputFont: st.useRegex ? "'Space Mono', monospace" : 'Archivo',
+      inputPlaceholder: st.useRegex ? 'regular expression, e.g. \\b(kick|thunder)\\b' : 'Search dispatches — kicks, thunder, dreams, drywall…',
+      onInput: this.onInput, onFocus: this.onFocus, onKey: this.onKey, onSubmit: this.onSubmit,
+      showSug: suggestions.length > 0, suggestions,
+      results, hasResults: hasQuery && !res.error && results.length > 0,
+      noResults: hasQuery && !res.error && results.length === 0,
+      hasError: hasQuery && !!res.error, errorMsg: res.error || '',
+      resultLabel,
+      regexChip: this.chip(st.useRegex, '#8ec63f'),
+      caseChip: this.chip(st.caseInsensitive, '#8ec63f'),
+      wordChip: this.chip(st.wholeWord, '#8ec63f'),
+      onToggleRegex: this.onToggleRegex, onToggleCase: this.onToggleCase, onToggleWord: this.onToggleWord,
+      scopeChips, sectionChips,
+      sectionHint: st.sections.length ? '(' + st.sections.length + ' active)' : '(all)',
+      onOpenBuilder: this.onOpenBuilder,
+      // builder
+      builderOpen: st.builderOpen, pattern: st.pattern, patternRef: this.patternRef,
+      onPattern: this.onPattern, flagStr: Object.keys(st.flags).filter(k => st.flags[k]).join(''),
+      builderStatus, builderStatusColor, builderBorder,
+      flagChips, tokenGroups, quickTokens,
+      literal: st.literal, onLiteral: this.onLiteral, onLiteralKey: this.onLiteralKey, onInsertLiteral: this.onInsertLiteral,
+      onBuilderClear: this.onBuilderClear, onBuilderCopy: this.onBuilderCopy,
+      copyLabel: st.copied ? 'Copied ✓' : 'Copy',
+      onBuilderClose: this.onBuilderClose, onBuilderApply: this.onBuilderApply,
+    };
+  }
+}
+</script>
+</body>
+</html>

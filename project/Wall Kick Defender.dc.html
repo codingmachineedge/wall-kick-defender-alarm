@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #14110d; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  a { color: #f0921f; text-decoration: none; }
+  a:hover { color: #ffb14d; }
+  ::selection { background: #f0921f; color: #14110d; }
+  @keyframes wkd-pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .3; transform: scale(.78); } }
+  @keyframes wkd-ring { 0%,100% { transform: rotate(-10deg); } 25% { transform: rotate(10deg); } 50% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }
+  @keyframes wkd-wave { 0% { transform: scaleY(.2); } 100% { transform: scaleY(1); } }
+  @keyframes wkd-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;color:#f4efe6;background:#14110d;max-width:100%;overflow-x:hidden;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(20,17,13,0.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,239,230,0.08);">
+    <div style="max-width:1360px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 24px;">
+      <a href="#top" style="display:flex;align-items:center;gap:12px;color:#f4efe6;font-weight:900;font-size:20px;letter-spacing:-0.01em;flex-shrink:0;white-space:nowrap;">
+        <span style="width:38px;height:38px;border-radius:10px;background:#f0921f;color:#14110d;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;">W</span>
+        WALL KICK DEFENDER
+      </a>
+      <nav style="display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;font-size:16px;font-weight:600;color:#d8d0c2;">
+        <a href="#threat" style="color:#d8d0c2;">The Threat</a>
+        <a href="#how" style="color:#d8d0c2;">How It Works</a>
+        <a href="#arsenal" style="color:#d8d0c2;">Arsenal</a>
+        <a href="#roadmap" style="color:#d8d0c2;">Roadmap</a>
+        <a href="#reviews" style="color:#d8d0c2;">Reviews</a>
+        <a href="The Kick Report.dc.html" style="color:#d8d0c2;">The Kick Report</a>
+        <a href="#pricing" style="color:#d8d0c2;">Pricing</a>
+        <a href="#membership" style="color:#d8d0c2;">Membership</a>
+        <a href="#kickstarter" style="display:inline-flex;align-items:center;gap:8px;background:#05ce78;color:#0a1f14;padding:11px 20px;border-radius:10px;font-weight:800;"><span style="font-family:'Space Mono',monospace;letter-spacing:-0.03em;">ks</span>Kickstarter</a>
+        <a href="#pricing" style="background:#f0921f;color:#14110d;padding:11px 22px;border-radius:10px;font-weight:800;">Arm your room →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="position:relative;overflow:hidden;padding:clamp(40px,6vw,72px) clamp(20px,5vw,48px) clamp(44px,6vw,84px);">
+    <div style="position:absolute;inset:0;background:radial-gradient(90% 70% at 78% 8%, rgba(240,146,31,0.16), transparent 55%);pointer-events:none;"></div>
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:72px;align-items:center;position:relative;z-index:1;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:12px;font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.16em;color:#8ec63f;border:1px solid rgba(142,198,63,0.35);padding:8px 16px;border-radius:100px;margin-bottom:34px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:#8ec63f;animation:wkd-pulse 1.4s infinite;"></span>DEFENSIVE SLEEP SYSTEMS · SINCE 3:47 AM
+        </div>
+        <h1 style="font-size:clamp(44px,9vw,96px);line-height:0.94;font-weight:900;letter-spacing:-0.03em;margin:0;">He kicks the wall.<br><span style="color:#f0921f;">We ruin his night.</span></h1>
+        <p style="font-size:26px;line-height:1.5;color:#d8d0c2;max-width:640px;margin:36px 0 44px;font-weight:500;">Wall Kick Defender is the world's first home-defense system engineered for exactly one threat: the sibling on the other side of the drywall. Sensor detects the kick. Speaker delivers the consequences — a maximum-volume 2008 ringtone until he stops.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:38px;font-family:'Space Mono',monospace;font-size:14px;">
+          <span style="padding:8px 14px;border:1px solid rgba(142,198,63,0.35);border-radius:100px;color:#8ec63f;">👐 100% touchless</span>
+          <span style="padding:8px 14px;border:1px solid rgba(142,198,63,0.35);border-radius:100px;color:#8ec63f;">⚡ Fully async</span>
+          <span style="padding:8px 14px;border:1px solid rgba(142,198,63,0.35);border-radius:100px;color:#8ec63f;">🤖 Zero human input</span>
+          <span style="padding:8px 14px;border:1px solid rgba(142,198,63,0.35);border-radius:100px;color:#8ec63f;">🔒 Runs 100% local</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <a href="#pricing" style="background:#f0921f;color:#14110d;padding:20px 34px;border-radius:12px;font-weight:800;font-size:20px;">Deploy the kit — $129</a>
+          <a href="#how" style="border:1px solid rgba(244,239,230,0.25);color:#f4efe6;padding:20px 34px;border-radius:12px;font-weight:700;font-size:20px;">See it retaliate</a>
+        </div>
+        <a href="#kickstarter" style="display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:#05ce78;color:#0a1f14;padding:16px 28px;border-radius:12px;font-weight:800;font-size:19px;">
+          <span style="font-family:'Space Mono',monospace;font-weight:700;letter-spacing:-0.03em;">ks</span>
+          Back us on Kickstarter — 340% funded
+        </a>
+        <div style="display:flex;gap:32px 40px;flex-wrap:wrap;margin-top:52px;font-family:'Space Mono',monospace;">
+          <div><div style="font-size:38px;font-weight:700;color:#f4efe6;font-family:Archivo;">12,408</div><div style="font-size:15px;color:#a89f8e;margin-top:4px;">nights defended</div></div>
+          <div><div style="font-size:38px;font-weight:700;color:#f4efe6;font-family:Archivo;">0.4s</div><div style="font-size:15px;color:#a89f8e;margin-top:4px;">kick → retaliation</div></div>
+          <div><div style="font-size:38px;font-weight:700;color:#f4efe6;font-family:Archivo;">0</div><div style="font-size:15px;color:#a89f8e;margin-top:4px;">apologies accepted</div></div>
+        </div>
+      </div>
+
+      <!-- LIVE STATUS CARD (interactive) -->
+      <div style="background:#1b1710;border:1px solid rgba(244,239,230,0.12);border-radius:24px;padding:32px;box-shadow:0 40px 90px rgba(0,0,0,0.5);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;font-family:'Space Mono',monospace;">
+          <span style="font-size:15px;letter-spacing:0.14em;color:#a89f8e;">DEFENDER · BEDROOM</span>
+          <span style="font-size:14px;color:#7d7566;">v2.008</span>
+        </div>
+        <div style="border-radius:18px;padding:34px 28px;text-align:center;background:{{ statusBg }};border:1px solid {{ statusBorder }};transition:all .3s;">
+          <div style="font-size:64px;margin-bottom:10px;animation:{{ bellAnim }};display:inline-block;">🔔</div>
+          <div style="font-size:15px;font-family:'Space Mono',monospace;letter-spacing:0.2em;color:{{ statusColor }};">{{ statusKicker }}</div>
+          <div style="font-size:44px;font-weight:900;color:{{ statusColor }};line-height:1;margin-top:8px;">{{ statusText }}</div>
+        </div>
+        <div style="display:flex;gap:3px;align-items:flex-end;height:56px;margin:22px 2px;">
+          <sc-for list="{{ bars }}" as="bar" hint-placeholder-count="28">
+            <div style="flex:1;background:{{ bar.color }};height:{{ bar.h }};border-radius:2px;transform-origin:bottom;animation:wkd-wave {{ bar.dur }} ease-in-out infinite alternate;"></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button onClick="{{ onArm }}" style="flex:1;padding:15px;border-radius:12px;border:1px solid rgba(244,239,230,0.18);background:#14110d;color:#f4efe6;font-family:Archivo;font-weight:800;font-size:16px;cursor:pointer;">{{ armBtnLabel }}</button>
+          <button onClick="{{ onTrigger }}" style="flex:1;padding:15px;border-radius:12px;border:none;background:#e5484d;color:#fff;font-family:Archivo;font-weight:800;font-size:16px;cursor:pointer;">TEST TRIGGER</button>
+        </div>
+        <div style="text-align:center;font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin-top:16px;">{{ shameStr }} kicks intercepted · all his</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div style="background:#f0921f;color:#14110d;padding:16px 0;overflow:hidden;white-space:nowrap;border-top:2px solid #14110d;border-bottom:2px solid #14110d;">
+    <div style="display:inline-block;animation:wkd-marquee 28s linear infinite;font-family:'Space Mono',monospace;font-weight:700;font-size:18px;letter-spacing:0.04em;">
+      <span style="padding:0 24px;">DETECT ✦ DECIDE ✦ DEPLOY CONSEQUENCES ✦ IT WASN'T ME (it was him) ✦ MAXIMUM VOLUME ✦ 2008 RINGTONE ✦ NO MERCY ✦ DETECT ✦ DECIDE ✦ DEPLOY CONSEQUENCES ✦ IT WASN'T ME (it was him) ✦ MAXIMUM VOLUME ✦ 2008 RINGTONE ✦ NO MERCY ✦ </span>
+    </div>
+  </div>
+
+  <!-- THE THREAT -->
+  <section id="threat" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:80px;align-items:center;">
+      <div style="height:clamp(320px,50vw,640px);border-radius:22px;border:1px solid rgba(240,146,31,0.35);background:#1e1a14;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.38);">
+        <img src="images/surveillance-kick.png" alt="Nighttime surveillance-style photo of a foot kicking a shared bedroom wall" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#e5484d;margin-bottom:22px;">01 — THE THREAT MODEL</div>
+        <h2 style="font-size:clamp(40px,7vw,76px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">The wall was<br>never on your side.</h2>
+        <p style="font-size:clamp(18px,2.2vw,24px);line-height:1.55;color:#d8d0c2;max-width:660px;margin:30px 0 44px;font-weight:500;">His bed is shoved right against the shared wall — so every restless kick in his sleep lands six inches from your skull. And when he's awake? He walks like the floor personally offended him. "Walk quieter" has never once worked. The whole house shakes like thunder, and your nervous system prepares to fight a bear that lives next door.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;font-family:'Space Mono',monospace;">
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:20px 26px;background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:12px;"><span style="color:#a89f8e;font-size:clamp(15px,1.7vw,19px);">PEAK IMPACT</span><span style="color:#f0921f;font-size:clamp(15px,1.7vw,19px);font-weight:700;text-align:right;">0.9 G · "was stretching"</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:20px 26px;background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:12px;"><span style="color:#a89f8e;font-size:clamp(15px,1.7vw,19px);">FOOTSTEP MAGNITUDE</span><span style="color:#f0921f;font-size:clamp(15px,1.7vw,19px);font-weight:700;text-align:right;">4.1 Richter · thunder</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:20px 26px;background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:12px;"><span style="color:#a89f8e;font-size:clamp(15px,1.7vw,19px);">THREAT LEVEL</span><span style="color:#e5484d;font-size:clamp(15px,1.7vw,19px);font-weight:700;text-align:right;">SEVERE (drywall)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.06);border-bottom:1px solid rgba(244,239,230,0.06);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:46px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">02 — HOW IT WORKS</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Detect. Decide.<br><span style="color:#f0921f;">Deploy consequences.</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:44px;">
+          <div style="font-family:'Space Mono',monospace;color:#8ec63f;font-size:18px;margin-bottom:22px;">STEP 01</div>
+          <div style="font-size:54px;margin-bottom:20px;">📳</div>
+          <div style="font-size:34px;font-weight:800;line-height:1.05;margin-bottom:16px;">Aqara sensor feels the kick</div>
+          <p style="font-size:20px;line-height:1.55;color:#a89f8e;margin:0;">An Aqara sensor mounted on <em>your</em> side of the shared wall reads every thump, kick and thunderous footstep transmitted through the drywall. Golden rule: never, ever trust the client.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:44px;">
+          <div style="font-family:'Space Mono',monospace;color:#8ec63f;font-size:18px;margin-bottom:22px;">STEP 02</div>
+          <div style="font-size:54px;margin-bottom:20px;">🧠</div>
+          <div style="font-size:34px;font-weight:800;line-height:1.05;margin-bottom:16px;">Home Assistant makes the call</div>
+          <p style="font-size:20px;line-height:1.55;color:#a89f8e;margin:0;">Our automation checks: is it sleep hours? Is the room armed? Was that a real kick? If yes to all — no negotiation.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(240,146,31,0.4);border-radius:20px;padding:44px;position:relative;">
+          <div style="font-family:'Space Mono',monospace;color:#f0921f;font-size:18px;margin-bottom:22px;">STEP 03</div>
+          <div style="font-size:54px;margin-bottom:20px;display:inline-block;animation:wkd-ring 0.7s ease-in-out infinite;">🔔</div>
+          <div style="font-size:34px;font-weight:800;line-height:1.05;margin-bottom:16px;">The speaker retaliates</div>
+          <p style="font-size:20px;line-height:1.55;color:#d8d0c2;margin:0;">A speaker in <em>your</em> room — mounted point-blank against the shared wall and aimed straight at his side — erupts with a maximum-volume 2008 ringtone right through the drywall. It does not stop until the kicking does. He learns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI FALSE-KICK DETECTION -->
+  <section id="ai" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;max-width:920px;margin:0 auto 56px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">02.5 — THE NEURAL CORE</div>
+        <h2 style="font-size:clamp(38px,7vw,72px);line-height:0.98;font-weight:900;margin:0;letter-spacing:-0.02em;">Super-Duper Ultra-Omega<br><span style="color:#f0921f;">Smartest AI</span> false-kick detection.</h2>
+        <p style="font-size:clamp(18px,2.2vw,23px);line-height:1.55;color:#d8d0c2;margin:28px auto 0;font-weight:500;max-width:760px;">A door slam is not a kick. The cat is not a kick. Your own heartbeat is (probably) not a kick. So we trained <strong style="color:#f4efe6;">50 independent detection models</strong> to tell a genuine, deniable, 3 AM wall-kick apart from everything else in the house. They all have to agree before the speaker sings.</p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 48px;margin-bottom:56px;font-family:'Space Mono',monospace;text-align:center;">
+        <div><div style="font-size:clamp(34px,5vw,52px);font-weight:700;color:#8ec63f;font-family:Archivo;">99.97%</div><div style="font-size:14px;color:#a89f8e;margin-top:4px;">true-kick accuracy</div></div>
+        <div><div style="font-size:clamp(34px,5vw,52px);font-weight:700;color:#8ec63f;font-family:Archivo;">50</div><div style="font-size:14px;color:#a89f8e;margin-top:4px;">models in the ensemble</div></div>
+        <div><div style="font-size:clamp(34px,5vw,52px);font-weight:700;color:#8ec63f;font-family:Archivo;">0.38s</div><div style="font-size:14px;color:#a89f8e;margin-top:4px;">detect → retaliate</div></div>
+        <div><div style="font-size:clamp(34px,5vw,52px);font-weight:700;color:#8ec63f;font-family:Archivo;">0</div><div style="font-size:14px;color:#a89f8e;margin-top:4px;">cats wrongly accused</div></div>
+      </div>
+
+      <div style="max-height:clamp(420px,58vh,580px);overflow-y:auto;border:1px solid rgba(244,239,230,0.08);border-radius:16px;padding:14px;background:#161209;"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,238px),1fr));gap:12px;">
+        <sc-for list="{{ detectorList }}" as="d" hint-placeholder-count="12">
+          <div style="display:flex;gap:16px;align-items:flex-start;background:#1e1a14;border:1px solid {{ d.border }};border-radius:14px;padding:20px 22px;">
+            <div style="font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#8ec63f;flex-shrink:0;padding-top:2px;">{{ d.num }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:18px;font-weight:800;line-height:1.15;margin-bottom:5px;">{{ d.name }}</div>
+              <div style="font-size:14.5px;line-height:1.45;color:#a89f8e;">{{ d.tag }}</div>
+            </div>
+            <div style="font-family:'Space Mono',monospace;font-size:13px;color:#7d7566;flex-shrink:0;padding-top:2px;">{{ d.acc }}</div>
+          </div>
+        </sc-for>
+      </div></div>
+      <div style="text-align:center;font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin-top:22px;">All 50 must vote YES. The cat has never triggered a single one. We checked. Repeatedly.</div>
+    </div>
+  </section>
+
+  <!-- ARSENAL / FEATURES -->
+  <section id="arsenal" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="margin-bottom:44px;max-width:820px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#e5484d;margin-bottom:22px;">03 — THE ARSENAL</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Everything you need to<br>win a cold war.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));grid-auto-rows:1fr;gap:24px;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">🛡️</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">Live threat status</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">ARMED, WATCHING or RETALIATING — always know what the Defender is doing, at a glance.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">📞</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">Ringtone armory</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">A curated library of legally-distinct-but-deeply-familiar 2008 ringtones. Pick your weapon below.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">🌙</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">Sleep-hours arming</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">Only arms while you sleep, so daytime wall-leaning goes unpunished. We're not monsters. Mostly.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">🎚️</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">Sensitivity dial</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">From "gentle tap" to "he breathed near the wall." Tune it to match his particular brand of chaos.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">📊</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">The Shame Counter™</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">Every kick logged, tallied and time-stamped. Undeniable evidence for the next family meeting.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:36px;">
+          <div style="font-size:42px;margin-bottom:20px;">⏱️</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:12px;">Kick history log</div>
+          <p style="font-size:18px;line-height:1.5;color:#a89f8e;margin:0;">A full timeline of every incident, with his flimsy explanation auto-attached to each entry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="max-width:860px;margin-bottom:56px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">ON THE ROADMAP</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Coming soon:<br>the wall <span style="color:#f0921f;">kicks back.</span></h2>
+        <p style="font-size:clamp(18px,2.2vw,23px);line-height:1.55;color:#d8d0c2;margin:26px 0 0;font-weight:500;">Every component already lives on <em>your</em> side of the wall — never trust the client. The next releases move from sound to <em>physics</em>.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;">
+        <div style="background:#1e1a14;border:1px solid rgba(240,146,31,0.4);border-radius:20px;padding:40px;">
+          <div style="font-family:'Space Mono',monospace;color:#f0921f;font-size:15px;margin-bottom:18px;">Q4 · IN TESTING</div>
+          <div style="font-size:44px;margin-bottom:18px;">🚪</div>
+          <div style="font-size:28px;font-weight:800;line-height:1.08;margin-bottom:14px;">Retaliation Kickback™</div>
+          <p style="font-size:18px;line-height:1.55;color:#a89f8e;margin:0;">A motorized door opener wired completely backwards. On a confirmed kick, a servo yanks his bedroom door open and lets it swing into the wall — the door, quite literally, kicks back. We fight kicks with doors. It works in testing. Testing is one door.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:40px;">
+          <div style="font-family:'Space Mono',monospace;color:#8ec63f;font-size:15px;margin-bottom:18px;">Q1 · PROTOTYPE</div>
+          <div style="font-size:44px;margin-bottom:18px;">📡</div>
+          <div style="font-size:28px;font-weight:800;line-height:1.08;margin-bottom:14px;">Counter-Thunder Emitter</div>
+          <p style="font-size:18px;line-height:1.55;color:#a89f8e;margin:0;">His footsteps shake the house like thunder. This fires an inverse vibration into the wall to cancel each one out — noise-cancelling headphones, but for your entire home. Silences the walk without silencing the consequences.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:40px;">
+          <div style="font-family:'Space Mono',monospace;color:#8ec63f;font-size:15px;margin-bottom:18px;">LIVE NOW</div>
+          <div style="font-size:44px;margin-bottom:18px;">🔊</div>
+          <div style="font-size:28px;font-weight:800;line-height:1.08;margin-bottom:14px;">Escalating Volume Mode</div>
+          <p style="font-size:18px;line-height:1.55;color:#a89f8e;margin:0;">Each kick in a session is louder than the last. He learns that persistence is, mathematically, a terrible strategy. Available today on the MAD tier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROL ROOM (interactive) -->
+  <section style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.06);border-bottom:1px solid rgba(244,239,230,0.06);">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(40px,5vw,72px);align-items:center;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">04 — THE CONTROL ROOM</div>
+        <h2 style="font-size:clamp(38px,7vw,72px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Choose his<br>consequences.</h2>
+        <p style="font-size:23px;line-height:1.55;color:#d8d0c2;margin:30px 0 40px;font-weight:500;">Set the volume. Load the ringtone. Hit TEST TRIGGER and hear exactly what he'll be waking up to. (Yes, this one actually makes noise. Turn your speakers down first — or don't.)</p>
+        <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;margin-bottom:12px;">RETALIATION VOLUME · {{ volume }}%</div>
+        <input type="range" min="0" max="100" value="{{ volume }}" onInput="{{ onVolume }}" style="width:100%;accent-color:#f0921f;height:8px;margin-bottom:34px;cursor:pointer;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;margin-bottom:12px;">SENSITIVITY · LEVEL {{ sensitivity }}</div>
+        <input type="range" min="1" max="10" value="{{ sensitivity }}" onInput="{{ onSensitivity }}" style="width:100%;accent-color:#8ec63f;height:8px;cursor:pointer;">
+      </div>
+      <div style="background:#1b1710;border:1px solid rgba(244,239,230,0.12);border-radius:24px;padding:34px;box-shadow:0 40px 90px rgba(0,0,0,0.5);">
+        <div style="font-family:'Space Mono',monospace;font-size:15px;letter-spacing:0.14em;color:#a89f8e;margin-bottom:20px;">SELECT RINGTONE ARMORY</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px;">
+          <sc-for list="{{ ringtoneList }}" as="rt" hint-placeholder-count="4">
+            <button onClick="{{ rt.onPick }}" style="display:flex;justify-content:space-between;align-items:center;text-align:left;padding:18px 22px;border-radius:14px;border:1px solid {{ rt.border }};background:{{ rt.bg }};color:#f4efe6;cursor:pointer;font-family:Archivo;">
+              <span><span style="display:block;font-size:20px;font-weight:800;">{{ rt.name }}</span><span style="display:block;font-size:15px;color:#a89f8e;font-family:'Space Mono',monospace;margin-top:3px;">{{ rt.desc }}</span></span>
+              <span style="font-size:20px;color:{{ rt.check }};">{{ rt.mark }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ onTrigger }}" style="width:100%;padding:24px;border-radius:16px;border:none;background:#e5484d;color:#fff;font-family:Archivo;font-weight:900;font-size:26px;letter-spacing:0.02em;cursor:pointer;box-shadow:0 10px 30px rgba(229,72,77,0.4);">{{ triggerLabel }}</button>
+        <div style="text-align:center;font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin-top:16px;">{{ shameStr }} total retaliations logged</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#e5484d;margin-bottom:22px;">05 — FIELD REPORTS</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Siblings defeated.<br><span style="color:#f0921f;">Peace restored.</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"Slept through the night for the first time since 2019. My brother now tiptoes past his own wall. 10/10, would psychologically condition again."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Priya R., older sister & victor</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"Setup took ten minutes. Revenge was instant. The Shame Counter alone won me the argument at Thanksgiving."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Marcus T., light sleeper</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"The AI has never once blamed my cat, which is more than I can say for my family. It knew it was my brother every single time. Vindicated."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Dana K. & Mr. Whiskers (exonerated)</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"His bed is against our shared wall and his footsteps shake the house like thunder. Within a week he'd rearranged his entire room. I did nothing but install a sensor."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Leo M., finally rested</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"I upgraded to Escalating Volume Mode. He now considers each footstep a financial decision. Household seismic activity down 91%."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Sana P., MAD tier subscriber</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:20px;padding:38px;">
+          <div style="color:#f0921f;font-size:22px;margin-bottom:18px;">★★★★★</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"Mom didn't believe me for three years. The Shame Counter log had timestamps. The trial lasted four minutes. I won."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— Aisha R., holds the evidence</div>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(229,72,77,0.35);border-radius:20px;padding:38px;">
+          <div style="color:#e5484d;font-size:22px;margin-bottom:18px;">★☆☆☆☆</div>
+          <p style="font-size:22px;line-height:1.5;margin:0 0 26px;font-weight:500;">"This device is a menace. It goes off every time I so much as look at the wall. I have not slept. Whoever bought this for my sister, I know it was you."</p>
+          <div style="font-family:'Space Mono',monospace;font-size:16px;color:#a89f8e;">— The Brother (verified perpetrator)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCIENCE -->
+  <section id="science" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.06);border-bottom:1px solid rgba(244,239,230,0.06);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;max-width:820px;margin:0 auto 56px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#f0921f;margin-bottom:22px;">THE RESEARCH</div>
+        <h2 style="font-size:clamp(38px,7vw,72px);line-height:0.98;font-weight:900;margin:0;letter-spacing:-0.02em;">Backed by <span style="color:#f0921f;">(our own)</span> science.</h2>
+        <p style="font-size:clamp(18px,2.2vw,23px);line-height:1.55;color:#d8d0c2;margin:26px auto 0;font-weight:500;">We ran a rigorous 11-night study on a sample size of one very tired person. The results were, frankly, staggering — and entirely reproducible in our lab (a bedroom).</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px;font-family:'Space Mono',monospace;text-align:center;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:34px 20px;"><div style="font-size:clamp(40px,6vw,62px);font-weight:700;color:#8ec63f;font-family:Archivo;">+2.3h</div><div style="font-size:14px;color:#a89f8e;margin-top:8px;">nightly sleep gained</div></div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:34px 20px;"><div style="font-size:clamp(40px,6vw,62px);font-weight:700;color:#8ec63f;font-family:Archivo;">-91%</div><div style="font-size:14px;color:#a89f8e;margin-top:8px;">3 AM wake-ups</div></div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:34px 20px;"><div style="font-size:clamp(40px,6vw,62px);font-weight:700;color:#8ec63f;font-family:Archivo;">-64%</div><div style="font-size:14px;color:#a89f8e;margin-top:8px;">measured cortisol</div></div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:18px;padding:34px 20px;"><div style="font-size:clamp(40px,6vw,62px);font-weight:700;color:#8ec63f;font-family:Archivo;">+38%</div><div style="font-size:14px;color:#a89f8e;margin-top:8px;">time spent in REM</div></div>
+      </div>
+      <div style="max-width:820px;margin:44px auto 0;padding:32px 36px;background:#14110d;border-left:3px solid #f0921f;border-radius:0 12px 12px 0;">
+        <p style="font-size:clamp(19px,2.4vw,26px);line-height:1.4;font-style:italic;color:#f4efe6;margin:0;font-family:Archivo;font-weight:500;">“Subjects who deployed the Defender returned to REM sleep 3.1× faster and were 100% more likely to finish the dream they were having.”</p>
+        <div style="font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin-top:18px;">— WKD Research Institute, <em>Journal of Applied Pettiness</em>, vol. 2008. Peer review pending (reviewer asleep).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.06);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">06 — DEPLOY THE KIT</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Pick your level<br>of escalation.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:stretch;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:22px;padding:44px;display:flex;flex-direction:column;">
+          <div style="font-size:26px;font-weight:800;">The Ceasefire</div>
+          <p style="font-size:17px;color:#a89f8e;margin:8px 0 24px;line-height:1.5;">For the diplomatic sleeper who just wants a warning shot.</p>
+          <div style="font-size:60px;font-weight:900;line-height:1;">$89</div>
+          <div style="font-family:'Space Mono',monospace;font-size:15px;color:#7d7566;margin:6px 0 30px;">one-time · you own the peace</div>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;color:#d8d0c2;flex:1;">
+            <div>✓ 1 Aqara vibration sensor</div>
+            <div>✓ Live threat status</div>
+            <div>✓ 3 starter ringtones</div>
+            <div>✓ Sleep-hours arming</div>
+          </div>
+          <a href="#top" style="margin-top:32px;text-align:center;border:1px solid rgba(244,239,230,0.25);color:#f4efe6;padding:16px;border-radius:12px;font-weight:800;font-size:18px;">Choose Ceasefire</a>
+        </div>
+        <div style="background:#211b12;border:2px solid #f0921f;border-radius:22px;padding:44px;display:flex;flex-direction:column;position:relative;transform:translateY(-14px);box-shadow:0 30px 70px rgba(0,0,0,0.5);">
+          <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#f0921f;color:#14110d;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;padding:7px 18px;border-radius:100px;">MOST DEPLOYED</div>
+          <div style="font-size:26px;font-weight:800;">The Deterrent</div>
+          <p style="font-size:17px;color:#a89f8e;margin:8px 0 24px;line-height:1.5;">The complete system. Sensor, speaker, and the full armory.</p>
+          <div style="font-size:60px;font-weight:900;line-height:1;">$129</div>
+          <div style="font-family:'Space Mono',monospace;font-size:15px;color:#7d7566;margin:6px 0 30px;">one-time · sleep is priceless</div>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;color:#d8d0c2;flex:1;">
+            <div>✓ Everything in Ceasefire</div>
+            <div>✓ In-room retaliation speaker</div>
+            <div>✓ Full ringtone armory (12)</div>
+            <div>✓ The Shame Counter™</div>
+            <div>✓ Sensitivity dial + kick log</div>
+          </div>
+          <a href="#top" style="margin-top:32px;text-align:center;background:#f0921f;color:#14110d;padding:16px;border-radius:12px;font-weight:800;font-size:18px;">Deploy the Deterrent</a>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(229,72,77,0.4);border-radius:22px;padding:44px;display:flex;flex-direction:column;">
+          <div style="font-size:26px;font-weight:800;color:#e5484d;">Mutually Assured<br>Disruption</div>
+          <p style="font-size:17px;color:#a89f8e;margin:8px 0 24px;line-height:1.5;">For when diplomacy has completely failed. No survivors.</p>
+          <div style="font-size:60px;font-weight:900;line-height:1;">$249</div>
+          <div style="font-family:'Space Mono',monospace;font-size:15px;color:#7d7566;margin:6px 0 30px;">one-time · consequences included</div>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;color:#d8d0c2;flex:1;">
+            <div>✓ Everything in Deterrent</div>
+            <div>✓ 3 sensors (surround coverage)</div>
+            <div>✓ Subwoofer-grade speaker</div>
+            <div>✓ Auto-text to Mom on kick #3</div>
+            <div>✓ Escalating volume mode</div>
+          </div>
+          <a href="#top" style="margin-top:32px;text-align:center;border:1px solid rgba(229,72,77,0.5);color:#e5484d;padding:16px;border-radius:12px;font-weight:800;font-size:18px;">Go nuclear</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTIONS -->
+  <section id="membership" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:22px;">DEFENDER+ MEMBERSHIP</div>
+        <h2 style="font-size:clamp(40px,7vw,80px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">More sleep,<br>every month.</h2>
+        <p style="font-size:clamp(18px,2.2vw,23px);line-height:1.5;color:#d8d0c2;margin:24px auto 0;font-weight:500;max-width:680px;">The hardware defends you. The membership makes it ruthless. Even the free tier reduces kicks — it just also, occasionally, roots for him.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;align-items:stretch;">
+
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:22px;padding:40px;display:flex;flex-direction:column;">
+          <div style="font-size:26px;font-weight:800;">Free</div>
+          <p style="font-size:16px;color:#a89f8e;margin:8px 0 22px;line-height:1.5;">Real protection, with the occasional betrayal.</p>
+          <div style="font-size:56px;font-weight:900;line-height:1;">$0</div>
+          <div style="font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin:6px 0 26px;">forever · ad-supported</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;color:#d8d0c2;flex:1;">
+            <div>✓ Core kick detection &amp; retaliation</div>
+            <div>✓ Still cuts kicks by ~40%</div>
+            <div>✓ Live threat status</div>
+            <div>✓ 1 starter ringtone</div>
+            <div style="color:#e5484d;">⚠ “Sponsored Silence” ad breaks</div>
+          </div>
+          <div style="margin-top:20px;padding:16px 18px;background:#14110d;border:1px dashed rgba(229,72,77,0.5);border-radius:12px;font-size:14px;line-height:1.5;color:#c9a99a;font-family:'Space Mono',monospace;">During ad breaks the Defender briefly <strong style="color:#e5484d;">stops retaliating</strong> and a soft voice tells your brother to kick freely — then reminds you both that Plus removes ads.</div>
+          <a href="#membership" style="margin-top:24px;text-align:center;border:1px solid rgba(244,239,230,0.25);color:#f4efe6;padding:15px;border-radius:12px;font-weight:800;font-size:17px;">Start free</a>
+        </div>
+
+        <div style="background:#211b12;border:2px solid #f0921f;border-radius:22px;padding:40px;display:flex;flex-direction:column;position:relative;box-shadow:0 30px 70px rgba(0,0,0,0.5);">
+          <div style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#f0921f;color:#14110d;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.1em;padding:7px 18px;border-radius:100px;white-space:nowrap;">BEST SLEEP / DOLLAR</div>
+          <div style="font-size:26px;font-weight:800;">Plus</div>
+          <p style="font-size:16px;color:#a89f8e;margin:8px 0 22px;line-height:1.5;">No ads. No mercy. Full arsenal, unlocked.</p>
+          <div style="font-size:56px;font-weight:900;line-height:1;">$6<span style="font-size:22px;color:#a89f8e;font-weight:600;">/mo</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin:6px 0 26px;">billed while you actually sleep</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;color:#d8d0c2;flex:1;">
+            <div>✓ Everything in Free, minus the betrayal</div>
+            <div>✓ Zero ad breaks, ever</div>
+            <div>✓ Full 12-ringtone armory</div>
+            <div>✓ The Shame Counter™ + kick log</div>
+            <div>✓ Sleep-hours scheduling</div>
+            <div>✓ Sensitivity dial &amp; false-kick AI</div>
+            <div>✓ Weekly “he kicked X times” report</div>
+          </div>
+          <a href="#membership" style="margin-top:24px;text-align:center;background:#f0921f;color:#14110d;padding:15px;border-radius:12px;font-weight:800;font-size:17px;">Go Plus</a>
+        </div>
+
+        <div style="background:#1e1a14;border:1px solid rgba(229,72,77,0.4);border-radius:22px;padding:40px;display:flex;flex-direction:column;">
+          <div style="font-size:26px;font-weight:800;color:#e5484d;">Overlord</div>
+          <p style="font-size:16px;color:#a89f8e;margin:8px 0 22px;line-height:1.5;">Total household air superiority.</p>
+          <div style="font-size:56px;font-weight:900;line-height:1;">$14<span style="font-size:22px;color:#a89f8e;font-weight:600;">/mo</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:14px;color:#7d7566;margin:6px 0 26px;">worth every restful penny</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;color:#d8d0c2;flex:1;">
+            <div>✓ Everything in Plus</div>
+            <div>✓ Escalating Volume Mode</div>
+            <div>✓ Counter-Thunder footstep cancelling</div>
+            <div>✓ Retaliation Kickback™ door (beta)</div>
+            <div>✓ Auto-text to Mom on kick #3</div>
+            <div>✓ Multi-room surround coverage</div>
+            <div>✓ Court-admissible evidence export</div>
+            <div>✓ Priority 3 AM support line</div>
+          </div>
+          <a href="#membership" style="margin-top:24px;text-align:center;border:1px solid rgba(229,72,77,0.5);color:#e5484d;padding:15px;border-radius:12px;font-weight:800;font-size:17px;">Become Overlord</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:960px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div style="font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.22em;color:#e5484d;margin-bottom:22px;">07 — INTERROGATION</div>
+        <h2 style="font-size:clamp(38px,7vw,72px);line-height:0.96;font-weight:900;margin:0;letter-spacing:-0.02em;">Reasonable questions.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:32px;">
+          <div style="font-size:24px;font-weight:800;margin-bottom:10px;">Isn't this a bit petty?</div>
+          <p style="font-size:19px;line-height:1.55;color:#a89f8e;margin:0;">Yes. Pettiness is the core feature. He kicked first — we simply built infrastructure around it.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:32px;">
+          <div style="font-size:24px;font-weight:800;margin-bottom:10px;">Will it wake ME up too?</div>
+          <p style="font-size:19px;line-height:1.55;color:#a89f8e;margin:0;">The speaker lives in <em>your</em> room but faces the shared wall point-blank, firing the ringtone through the drywall into his side. A little bleed-through on your end is a small tax on justice — and honestly, the sound of him waking up is deeply soothing.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:32px;">
+          <div style="font-size:24px;font-weight:800;margin-bottom:10px;">Do I need Home Assistant?</div>
+          <p style="font-size:19px;line-height:1.55;color:#a89f8e;margin:0;">Yep — the Defender runs entirely on your local Home Assistant setup with the Aqara sensor. Fully offline, no cloud, no subscription, no mercy.</p>
+        </div>
+        <div style="background:#1e1a14;border:1px solid rgba(244,239,230,0.1);border-radius:16px;padding:32px;">
+          <div style="font-size:24px;font-weight:800;margin-bottom:10px;">What if he removes the sensor?</div>
+          <p style="font-size:19px;line-height:1.55;color:#a89f8e;margin:0;">The Defender detects tampering and files it under the Shame Counter as "Attempted Cover-Up." Escalation is automatic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KICKSTARTER -->
+  <section id="kickstarter" style="padding:clamp(40px,5.5vw,78px) clamp(20px,5vw,48px);">
+    <div style="max-width:1360px;margin:0 auto;background:#0d1a12;border:1px solid rgba(5,206,120,0.35);border-radius:clamp(18px,3vw,28px);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(36px,4vw,64px);align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:0.16em;color:#05ce78;border:1px solid rgba(5,206,120,0.4);padding:8px 16px;border-radius:100px;margin-bottom:28px;"><span style="font-weight:700;letter-spacing:-0.03em;">ks</span>LIVE ON KICKSTARTER</div>
+        <h2 style="font-size:clamp(36px,7vw,68px);line-height:0.98;font-weight:900;margin:0;letter-spacing:-0.02em;">Fund the war<br>against the wall.</h2>
+        <p style="font-size:23px;line-height:1.55;color:#c7d6cc;margin:28px 0 40px;font-weight:500;max-width:600px;">We hit our goal in 41 minutes. Every stretch goal so far has just made the ringtones louder. Back us now to lock in early-bird pricing and a limited-edition "Sleep Tight" sensor decal.</p>
+        <a href="#pricing" style="display:inline-flex;align-items:center;gap:12px;background:#05ce78;color:#0a1f14;padding:22px 38px;border-radius:14px;font-weight:900;font-size:22px;"><span style="font-family:'Space Mono',monospace;letter-spacing:-0.03em;">ks</span>Back this project</a>
+      </div>
+      <div style="background:#0a140e;border:1px solid rgba(5,206,120,0.25);border-radius:20px;padding:38px;">
+        <div style="font-family:'Space Mono',monospace;font-size:15px;color:#7fae93;letter-spacing:0.1em;margin-bottom:8px;">PLEDGED OF $20,000 GOAL</div>
+        <div style="font-size:56px;font-weight:900;color:#05ce78;line-height:1;">$68,140</div>
+        <div style="height:12px;border-radius:100px;background:rgba(5,206,120,0.15);margin:22px 0 30px;overflow:hidden;"><div style="width:100%;height:100%;background:#05ce78;border-radius:100px;"></div></div>
+        <div style="display:flex;justify-content:space-between;text-align:center;font-family:'Space Mono',monospace;">
+          <div><div style="font-size:34px;font-weight:700;color:#f4efe6;font-family:Archivo;">340%</div><div style="font-size:14px;color:#7fae93;margin-top:4px;">funded</div></div>
+          <div><div style="font-size:34px;font-weight:700;color:#f4efe6;font-family:Archivo;">2,190</div><div style="font-size:14px;color:#7fae93;margin-top:4px;">backers</div></div>
+          <div><div style="font-size:34px;font-weight:700;color:#f4efe6;font-family:Archivo;">11</div><div style="font-size:14px;color:#7fae93;margin-top:4px;">days to go</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="padding:clamp(52px,8vw,100px) clamp(20px,5vw,48px);text-align:center;position:relative;overflow:hidden;background:#100e0a;border-top:1px solid rgba(244,239,230,0.06);">
+    <div style="position:absolute;inset:0;background:radial-gradient(70% 100% at 50% 0%, rgba(240,146,31,0.18), transparent 60%);pointer-events:none;"></div>
+    <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;">
+      <h2 style="font-size:clamp(46px,9vw,96px);line-height:0.94;font-weight:900;margin:0;letter-spacing:-0.03em;">Reclaim<br>your <span style="color:#f0921f;">3 AM.</span></h2>
+      <p style="font-size:24px;line-height:1.5;color:#d8d0c2;margin:34px auto 46px;max-width:640px;font-weight:500;">Join 12,408 siblings sleeping soundly while their brothers develop a healthy, involuntary fear of load-bearing walls.</p>
+      <a href="#pricing" style="display:inline-block;background:#f0921f;color:#14110d;padding:24px 46px;border-radius:14px;font-weight:900;font-size:24px;">Deploy the Defender — $129</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:48px clamp(20px,5vw,48px);border-top:1px solid rgba(244,239,230,0.08);">
+    <div style="max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;font-family:'Space Mono',monospace;font-size:15px;color:#7d7566;">
+      <div style="display:flex;align-items:center;gap:12px;color:#a89f8e;font-family:Archivo;font-weight:900;font-size:18px;">
+        <span style="width:32px;height:32px;border-radius:8px;background:#f0921f;color:#14110d;display:flex;align-items:center;justify-content:center;font-size:17px;">W</span>
+        WALL KICK DEFENDER
+      </div>
+      <div style="max-width:560px;text-align:right;line-height:1.5;">Not affiliated with any phone manufacturer, past or present. Ringtones are legally-distinct homages. Please defend responsibly. © 2026 Defensive Sleep Systems.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    armed: true,
+    triggered: false,
+    shame: 1247,
+    volume: 88,
+    sensitivity: 6,
+    ringtone: 0,
+  };
+
+  ringtones = [
+    { name: "The Classic (2008 Edition)", desc: "grande valse, you know the one", melody: [659,587,370,415,554,494,294,330,494,440,277,330,440,415] },
+    { name: "Ascending Doom", desc: "starts polite, ends catastrophic", melody: [392,494,587,698,784,880,988,1046] },
+    { name: "Air Raid Deluxe", desc: "for repeat offenders", melody: [880,660,880,660,880,660,880,660] },
+    { name: "Dial-Up Nightmare", desc: "psychological warfare tier", melody: [1046,523,1318,659,1568,784,2093,1046] },
+  ];
+
+  detectors = [
+    ["Heel-Strike Fourier Transform", "decomposes every thud into its guilty frequencies"],
+    ["Drywall Resonance Fingerprinting", "each kick has a unique signature. we filed them"],
+    ["Recursive Stomp Convolution", "stomps, all the way down"],
+    ["Gait-Adversarial Neural Net", "learns his walk, then holds it against him"],
+    ["Thunderstep Seismograph v4", "USGS-grade. calibrated to one brother"],
+    ["\"It Wasn't Me\" Lie-Detection Layer", "cross-references audio with his face"],
+    ["Bayesian Bedframe Rattle Model", "priors updated nightly, no consent"],
+    ["Sibling Intent Transformer", "128B params, one purpose"],
+    ["Quantum Toe-Stub Discriminator", "collapses the waveform of blame"],
+    ["Circadian Rage Predictor", "knows he'll lose the game before he does"],
+    ["Sub-Bass Footfall Classifier", "if the floor dips, we log it"],
+    ["Wall-Kick vs Cat-Jump Separator", "the cat is innocent. always"],
+    ["Midnight Snack Trajectory Filter", "fridge trips get a warning, not a strike"],
+    ["Load-Bearing Panic Index", "measures how scared the studs are"],
+    ["Reinforcement Retaliation Optimizer", "rewards itself for perfect timing"],
+    ["Doppler Approach Warning", "hears him coming down the hall"],
+    ["Controller-Throw Impact Estimator", "distinguishes rage from clumsiness"],
+    ["Boolean \"Was That Him?\" Gate", "answer is statistically always yes"],
+    ["Harmonic Snore Subtractor", "removes his snoring so we hear only crimes"],
+    ["Vibration Entropy Sampler", "chaos, quantified"],
+    ["Footstep Cadence LSTM", "remembers every step he's ever taken"],
+    ["Genuine-Kick Confidence Ensemble", "47 models vote. he never wins"],
+    ["Anti-Placebo Cross-Validator", "proves it really was that loud"],
+    ["Stomp Amplitude Percentiler", "ranks tonight's kick against history"],
+    ["Drywall Modal Analysis Engine", "finite-element, infinite pettiness"],
+    ["Nocturnal Aggression Heuristic", "if it's 3am, assume the worst"],
+    ["Floor-Joist Flex Monitor", "the joists are tired. we listen"],
+    ["Reverse Blame Attribution Net", "routes all blame back to source"],
+    ["Micro-Tremor Denoiser", "keeps the tremors, drops the excuses"],
+    ["Peak-Detection Peak Detector", "detects the peak of the peak"],
+    ["Sarcasm-Immune Threshold Tuner", "\"barely touched it\" does not compute"],
+    ["Sleep-Cycle Aware Sensitivity", "meanest during your deep sleep"],
+    ["Multi-Sensor Kalman Fusion", "three sensors, one verdict"],
+    ["Rage-Quit Signature Matcher", "the controller hits different"],
+    ["Placebo Wall-Tap Rejector", "gentle taps get mercy. barely"],
+    ["Gravitational Kick Compensator", "adjusts for how heavy his foot is"],
+    ["4 AM Bias Correction", "because everything is worse at 4"],
+    ["Echo-Cancelling Room Mapper", "knows exactly which wall betrayed you"],
+    ["Deniability Probability Scorer", "lower the score, louder the ringtone"],
+    ["Random Forest of Grievances", "every tree is a past incident"],
+    ["Heavy-Foot Frequency Sieve", "sifts thunder from mere walking"],
+    ["Adaptive Grudge Weighting", "repeat offenses weigh more"],
+    ["Zero-Crossing Stomp Counter", "counts what he swears didn't happen"],
+    ["Contextual \"Just Stretching\" NLP", "parses the excuse in real time"],
+    ["Seismic-to-Speaker Latency Trimmer", "revenge in under 400ms"],
+    ["Overfitting-Resistant Vendetta Layer", "generalizes the grudge cleanly"],
+    ["Convolutional Ceiling-Fan Excluder", "the fan is not the enemy"],
+    ["Dynamic Sibling Threat Kernel", "recomputed every single kick"],
+    ["Hyperparameter Petty-Search", "grid-searches for maximum pettiness"],
+    ["Ultra-Omega Consensus Vote", "all 49 above must agree. they do"],
+  ];
+
+  audioCtx = null;
+
+  playMelody() {
+    try {
+      if (!this.audioCtx) this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const ctx = this.audioCtx;
+      if (ctx.state === "suspended") ctx.resume();
+      const gainMax = Math.max(0.0001, (this.state.volume / 100) * 0.35);
+      const notes = this.ringtones[this.state.ringtone].melody;
+      const step = 0.16;
+      notes.forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = "square";
+        osc.frequency.value = f;
+        const t0 = ctx.currentTime + i * step;
+        g.gain.setValueAtTime(0, t0);
+        g.gain.linearRampToValueAtTime(gainMax, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + step * 0.9);
+        osc.connect(g).connect(ctx.destination);
+        osc.start(t0);
+        osc.stop(t0 + step);
+      });
+    } catch (e) {}
+  }
+
+  onArm = () => this.setState(s => ({ armed: !s.armed }));
+
+  onTrigger = () => {
+    this.playMelody();
+    this.setState(s => ({ triggered: true, shame: s.shame + 1, armed: true }));
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ triggered: false }), 2600);
+  };
+
+  onVolume = (e) => this.setState({ volume: +e.target.value });
+  onSensitivity = (e) => this.setState({ sensitivity: +e.target.value });
+  pick = (i) => () => this.setState({ ringtone: i });
+
+  renderVals() {
+    const { armed, triggered, shame, volume, sensitivity, ringtone } = this.state;
+    const shameStr = shame.toLocaleString();
+
+    let statusText, statusKicker, statusColor, statusBg, statusBorder, bellAnim;
+    if (triggered) {
+      statusText = "RETALIATING";
+      statusKicker = "KICK DETECTED";
+      statusColor = "#e5484d";
+      statusBg = "rgba(229,72,77,0.14)";
+      statusBorder = "rgba(229,72,77,0.5)";
+      bellAnim = "wkd-ring 0.5s ease-in-out infinite";
+    } else if (armed) {
+      statusText = "ARMED";
+      statusKicker = "WATCHING THE WALL";
+      statusColor = "#8ec63f";
+      statusBg = "rgba(142,198,63,0.1)";
+      statusBorder = "rgba(142,198,63,0.4)";
+      bellAnim = "none";
+    } else {
+      statusText = "STAND DOWN";
+      statusKicker = "DEFENSES OFFLINE";
+      statusColor = "#a89f8e";
+      statusBg = "rgba(168,159,142,0.08)";
+      statusBorder = "rgba(168,159,142,0.25)";
+      bellAnim = "none";
+    }
+
+    const barColor = triggered ? "#e5484d" : armed ? "#8ec63f" : "#4a453c";
+    const bars = Array.from({ length: 30 }, (_, i) => {
+      const base = triggered ? (30 + Math.random() * 70) : (18 + ((i * 37) % 60));
+      return { h: base + "%", color: barColor, dur: (0.4 + ((i * 13) % 60) / 100).toFixed(2) + "s" };
+    });
+
+    const ringtoneList = this.ringtones.map((r, i) => ({
+      name: r.name,
+      desc: r.desc,
+      onPick: this.pick(i),
+      bg: i === ringtone ? "rgba(240,146,31,0.14)" : "#14110d",
+      border: i === ringtone ? "#f0921f" : "rgba(244,239,230,0.12)",
+      mark: i === ringtone ? "●" : "○",
+      check: i === ringtone ? "#f0921f" : "#7d7566",
+    }));
+
+    const detectorList = this.detectors.map((d, i) => ({
+      num: String(i + 1).padStart(2, "0"),
+      name: d[0],
+      tag: d[1],
+      acc: (98 + ((i * 7919) % 200) / 100).toFixed(2) + "%",
+      border: i === 49 ? "rgba(142,198,63,0.5)" : "rgba(244,239,230,0.1)",
+    }));
+
+    return {
+      detectorList,
+      armed, triggered, shameStr, volume, sensitivity,
+      statusText, statusKicker, statusColor, statusBg, statusBorder, bellAnim,
+      bars, ringtoneList,
+      armBtnLabel: armed ? "STAND DOWN" : "ARM ROOM",
+      triggerLabel: triggered ? "🔔 RETALIATING…" : "TEST TRIGGER",
+      onArm: this.onArm,
+      onTrigger: this.onTrigger,
+      onVolume: this.onVolume,
+      onSensitivity: this.onSensitivity,
+    };
+  }
+}
+</script>
+</body>
+</html>
