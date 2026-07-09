@@ -6,11 +6,27 @@ services:
     restart: unless-stopped
     ports:
       - "${PORT:-8080}:8080"
-    env_file:
-      - .env
     environment:
       PORT: 8080
       WKD_DATA_DIR: /data
+      WKD_TIER: ${WKD_TIER:-free}
+      WKD_DASHBOARD_TOKEN: ${WKD_DASHBOARD_TOKEN:-}
+      HA_URL: ${HA_URL:-}
+      HA_TOKEN: ${HA_TOKEN:-}
+      HA_TIMEOUT_MS: ${HA_TIMEOUT_MS:-8000}
+      WKD_SENSOR_ENTITIES: ${WKD_SENSOR_ENTITIES:-binary_sensor.wall_vibration}
+      WKD_MEDIA_PLAYER_ENTITIES: ${WKD_MEDIA_PLAYER_ENTITIES:-media_player.bedroom_speaker}
+      WKD_ARMED: ${WKD_ARMED:-true}
+      WKD_SENSOR_THRESHOLD: ${WKD_SENSOR_THRESHOLD:-0.5}
+      WKD_COOLDOWN_SECONDS: ${WKD_COOLDOWN_SECONDS:-20}
+      WKD_POLL_MS: ${WKD_POLL_MS:-1000}
+      WKD_RESPONSE_MODE: ${WKD_RESPONSE_MODE:-tts}
+      WKD_TTS_SERVICE: ${WKD_TTS_SERVICE:-tts.cloud_say}
+      WKD_ALERT_MESSAGE: ${WKD_ALERT_MESSAGE:-Wall impact detected. Please stop kicking the wall.}
+      WKD_ALERT_MEDIA_URL: ${WKD_ALERT_MEDIA_URL:-}
+      WKD_MEDIA_CONTENT_TYPE: ${WKD_MEDIA_CONTENT_TYPE:-music}
+      WKD_ALERT_VOLUME: ${WKD_ALERT_VOLUME:-0.55}
+      WKD_ALLOW_SIMULATION: ${WKD_ALLOW_SIMULATION:-true}
     volumes:
       - wall-kick-defender-data:/data
 
