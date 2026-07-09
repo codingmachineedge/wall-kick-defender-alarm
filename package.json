@@ -6,6 +6,7 @@
   "description": "Wall Kick Defender server and dashboard for Home Assistant vibration sensors and media players.",
   "scripts": {
     "start": "node server/src/index.js",
+    "screenshots": "node scripts/capture-dashboard-screenshots.mjs",
     "test": "node --test server/test/*.test.js"
   },
   "engines": {
