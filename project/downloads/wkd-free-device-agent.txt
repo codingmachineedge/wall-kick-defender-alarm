@@ -1,0 +1,15 @@
+Wall Kick Defender Free Device Agent
+Edition date: April 1, 2026
+
+This mock download represents the free software tier for a purchased Wall Kick
+Defender device. It includes:
+
+- Core kick detection
+- One starter retaliation tone
+- Sponsored Silence ad breaks
+- Receipt exports with upgrade watermark
+- Limited kick log visibility
+
+Important: the free tier is software only after hardware purchase. Without a
+physical Wall Kick Defender device, there is no wall sensor, no speaker, no
+receipt recording, and no retaliation.

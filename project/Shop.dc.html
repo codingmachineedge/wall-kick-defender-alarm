@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #14110d; scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  a { color: #f0921f; text-decoration: none; }
+  a:hover { color: #ffb14d; }
+  ::selection { background: #f0921f; color: #14110d; }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;color:#f4efe6;background:#14110d;max-width:100%;overflow-x:hidden;">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(20,17,13,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,239,230,0.1);">
+    <div style="max-width:1240px;margin:0 auto;padding:16px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 22px;font-family:'Space Mono',monospace;font-size:13px;">
+      <a href="Wall Kick Defender.dc.html" style="display:flex;align-items:center;gap:10px;color:#f4efe6;font-weight:900;font-family:Archivo;font-size:18px;">
+        <span style="width:34px;height:34px;border-radius:9px;background:#f0921f;color:#14110d;display:flex;align-items:center;justify-content:center;">W</span>
+        WALL KICK DEFENDER
+      </a>
+      <nav style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <a href="The Kick Report.dc.html" style="color:#a89f8e;">News</a>
+        <a href="Downloads.dc.html" style="color:#a89f8e;">Downloads</a>
+        <a href="Court Simulator.dc.html" style="color:#a89f8e;">Court</a>
+        <a href="#checkout" style="background:#f0921f;color:#14110d;border-radius:10px;padding:10px 16px;font-family:Archivo;font-weight:800;">Checkout demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="padding:clamp(42px,6vw,82px) clamp(16px,4vw,36px) clamp(34px,5vw,60px);border-bottom:1px solid rgba(244,239,230,0.1);">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(30px,5vw,70px);align-items:center;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.22em;color:#8ec63f;margin-bottom:18px;">SHOP EDITION · APRIL 1, 2026</div>
+        <h1 style="font-size:clamp(42px,8vw,88px);line-height:0.92;font-weight:900;letter-spacing:-0.02em;margin:0;">Buy the wall some consequences.</h1>
+        <p style="font-family:Newsreader,serif;font-size:clamp(19px,2.3vw,25px);line-height:1.45;color:#d8d0c2;margin:24px 0 30px;">Hardware first. Membership second. Sleep eventually. Every plan starts with a physical device because software cannot hear a wall by wishing at it, and the Court Simulator needs receipts before it can argue the kicker can be sued in court.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#products" style="background:#f0921f;color:#14110d;padding:17px 24px;border-radius:12px;font-weight:900;">Shop kits</a>
+          <a href="#free-tier" style="border:1px solid rgba(244,239,230,0.25);color:#f4efe6;padding:17px 24px;border-radius:12px;font-weight:800;">Free tier caveats</a>
+        </div>
+      </div>
+      <img src="images/product-deterrent.png" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:16px;display:block;border:1px solid rgba(244,239,230,0.12);">
+    </div>
+  </section>
+
+  <section id="products" style="padding:clamp(38px,5vw,72px) clamp(16px,4vw,36px);">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#f0921f;margin-bottom:10px;">KITS</div>
+          <h2 style="font-size:clamp(30px,5vw,54px);line-height:0.98;font-weight:900;margin:0;">Shopify-ish, but angrier.</h2>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;">Free software tier still requires a device purchase.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px;">
+        <article style="background:#1a1610;border:1px solid rgba(244,239,230,0.1);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
+          <img src="images/product-ceasefire.png" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+          <div style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">STARTER KIT</div>
+            <h3 style="font-size:26px;line-height:1;margin:0;">The Ceasefire</h3>
+            <p style="font-family:Newsreader,serif;font-size:17px;line-height:1.45;color:#a89f8e;margin:0;flex:1;">One sensor, starter alerts, and enough proof to make "that was not me" sound tired.</p>
+            <div style="font-size:38px;font-weight:900;">$89</div>
+            <a href="#checkout" style="text-align:center;border:1px solid rgba(244,239,230,0.24);color:#f4efe6;padding:14px 16px;border-radius:10px;font-weight:900;">Add to cart</a>
+          </div>
+        </article>
+
+        <article style="background:#211b12;border:2px solid #f0921f;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.45);">
+          <img src="images/product-deterrent.png" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+          <div style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#f0921f;">BEST SELLER</div>
+            <h3 style="font-size:26px;line-height:1;margin:0;">The Deterrent</h3>
+            <p style="font-family:Newsreader,serif;font-size:17px;line-height:1.45;color:#d8d0c2;margin:0;flex:1;">Sensor, speaker, full receipt recording, and the 2008 Nokia ringtone your wall has been waiting for.</p>
+            <div style="font-size:38px;font-weight:900;">$129</div>
+            <a href="#checkout" style="text-align:center;background:#f0921f;color:#14110d;padding:14px 16px;border-radius:10px;font-weight:900;">Add to cart</a>
+          </div>
+        </article>
+
+        <article style="background:#1a1610;border:1px solid rgba(229,72,77,0.42);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
+          <img src="images/product-mad.png" alt="" style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+          <div style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1;">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#e5484d;">TOTAL COVERAGE</div>
+            <h3 style="font-size:26px;line-height:1;margin:0;">Mutually Assured Disruption</h3>
+            <p style="font-family:Newsreader,serif;font-size:17px;line-height:1.45;color:#a89f8e;margin:0;flex:1;">Three sensors, subwoofer-grade speaker, multi-room coverage, and escalation for walls that ignored every warning.</p>
+            <div style="font-size:38px;font-weight:900;">$249</div>
+            <a href="#checkout" style="text-align:center;border:1px solid rgba(229,72,77,0.5);color:#e5484d;padding:14px 16px;border-radius:10px;font-weight:900;">Add to cart</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="free-tier" style="padding:clamp(38px,5vw,72px) clamp(16px,4vw,36px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.08);border-bottom:1px solid rgba(244,239,230,0.08);">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#e5484d;margin-bottom:12px;">FREE IS NOT DEVICELESS</div>
+        <h2 style="font-size:clamp(30px,5vw,52px);line-height:0.98;font-weight:900;margin:0 0 18px;">The free tier is free after you own hardware.</h2>
+        <p style="font-family:Newsreader,serif;font-size:19px;line-height:1.5;color:#d8d0c2;margin:0;">Free gives real protection, but it is intentionally annoying so Plus can sit there looking reasonable.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+        <div style="background:#1a1610;border:1px solid rgba(229,72,77,0.32);border-radius:14px;padding:20px;">
+          <h3 style="font-size:21px;margin:0 0 12px;">Free-tier annoyances</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.4;color:#c9a99a;">
+            <div>Sponsored Silence pauses retaliation at peak drama.</div>
+            <div>Only one ringtone, and it picks 2008 Nokia most nights.</div>
+            <div>Receipt exports include a huge "UPGRADE?" footer.</div>
+            <div>Kick logs blur every fourth incident for "mystery."</div>
+            <div>The speaker occasionally says, "This could be louder."</div>
+          </div>
+        </div>
+        <div style="background:#1a1610;border:1px solid rgba(244,239,230,0.1);border-radius:14px;padding:20px;">
+          <h3 style="font-size:21px;margin:0 0 12px;">If you buy nothing</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.4;color:#a89f8e;">
+            <div>No sensor, no receipts, no source links, no proof.</div>
+            <div>No 2008 Nokia retaliation when the wall gets kicked.</div>
+            <div>No family-meeting graph. Just vibes and anger.</div>
+            <div>No product updates, no kick log, no sleep analytics.</div>
+            <div>No court simulator packet saying the kicker can be sued.</div>
+            <div>The wall remains a neutral witness with terrible memory.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout" style="padding:clamp(38px,5vw,72px) clamp(16px,4vw,36px);">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;align-items:start;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#8ec63f;margin-bottom:12px;">DEMO CHECKOUT</div>
+        <h2 style="font-size:clamp(30px,5vw,52px);line-height:0.98;font-weight:900;margin:0 0 18px;">Coinbase Commerce-style crypto checkout.</h2>
+        <p style="font-family:Newsreader,serif;font-size:19px;line-height:1.5;color:#d8d0c2;margin:0;">This storefront accepts the idea of crypto payment without collecting money. The buttons are a demo, the order is a mock, and your wallet can keep sleeping.</p>
+      </div>
+      <div style="background:#1a1610;border:1px solid rgba(142,198,63,0.35);border-radius:16px;padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid rgba(244,239,230,0.1);padding-bottom:16px;margin-bottom:18px;">
+          <div>
+            <div style="font-weight:900;font-size:22px;">The Deterrent</div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;margin-top:4px;">hardware + Free tier activation</div>
+          </div>
+          <div style="font-size:28px;font-weight:900;">$129</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;">
+          <button style="border:1px solid rgba(244,239,230,0.2);background:#100e0a;color:#f4efe6;border-radius:10px;padding:13px 8px;font-family:'Space Mono',monospace;font-weight:700;">USDC</button>
+          <button style="border:1px solid rgba(244,239,230,0.2);background:#100e0a;color:#f4efe6;border-radius:10px;padding:13px 8px;font-family:'Space Mono',monospace;font-weight:700;">BTC</button>
+          <button style="border:1px solid rgba(244,239,230,0.2);background:#100e0a;color:#f4efe6;border-radius:10px;padding:13px 8px;font-family:'Space Mono',monospace;font-weight:700;">ETH</button>
+        </div>
+        <a href="Downloads.dc.html" style="display:block;text-align:center;background:#8ec63f;color:#14110d;border-radius:12px;padding:16px 18px;font-weight:900;">Complete demo order</a>
+        <a href="Court Simulator.dc.html" style="display:block;text-align:center;border:1px solid rgba(244,239,230,0.24);color:#f4efe6;border-radius:12px;padding:15px 18px;font-weight:900;margin-top:10px;">Open court simulator</a>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.5;color:#a89f8e;margin-top:16px;">No real payment is collected. Coinbase Commerce integration is represented as a static demo flow for this GitHub Pages site.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(38px,5vw,72px) clamp(16px,4vw,36px);background:#100e0a;border-top:1px solid rgba(244,239,230,0.08);">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;color:#f0921f;margin-bottom:20px;">REVIEWS</div>
+      <div style="columns:280px;column-gap:18px;">
+        <blockquote style="break-inside:avoid;margin:0 0 18px;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:22px;font-size:18px;line-height:1.5;">"Free annoyed me into Plus, but even Free proved my brother was lying."<br><span style="display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:12px;color:#8ec63f;">VERIFIED DEVICE OWNER</span></blockquote>
+        <blockquote style="break-inside:avoid;margin:0 0 18px;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:22px;font-size:18px;line-height:1.5;">"The 2008 Nokia ringtone did more parenting in one night than I managed in six months."<br><span style="display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:12px;color:#f0921f;">PARENT REVIEW</span></blockquote>
+        <blockquote style="break-inside:avoid;margin:0 0 18px;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:22px;font-size:18px;line-height:1.5;">"The demo checkout did not charge me, which is more than I can say for lost sleep."<br><span style="display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:12px;color:#a89f8e;">SHOPPER REVIEW</span></blockquote>
+        <blockquote style="break-inside:avoid;margin:0 0 18px;background:#1a1610;border:1px solid rgba(244,239,230,0.08);border-radius:14px;padding:22px;font-size:18px;line-height:1.5;">"The product page made doing nothing look like the premium mistake."<br><span style="display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:12px;color:#e5484d;">SOCIAL REVIEW</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:32px clamp(16px,4vw,36px);border-top:1px solid rgba(244,239,230,0.1);font-family:'Space Mono',monospace;font-size:12px;color:#7d7566;">
+    <div style="max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+      <span>WALL KICK DEFENDER SHOP · APRIL 1, 2026</span>
+      <span>Demo storefront. No real payment collected.</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

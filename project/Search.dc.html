@@ -27,7 +27,11 @@
   <header style="border-bottom:1px solid rgba(244,239,230,0.12);">
     <div style="max-width:1180px;margin:0 auto;padding:14px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;">
       <a href="The Kick Report.dc.html" style="color:#a89f8e;">← The Kick Report</a>
-      <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">Wall Kick Defender</a>
+      <span style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="Shop.dc.html" style="color:#a89f8e;">Shop</a>
+        <a href="Downloads.dc.html" style="color:#a89f8e;">Downloads</a>
+        <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">Wall Kick Defender</a>
+      </span>
     </div>
   </header>
 
@@ -265,8 +269,8 @@ class Component extends DCLogic {
     const S = this.SECTIONS || {};
     return {
       ...x,
-      href: `Story ${String(x.id).padStart(3, '0')}.dc.html`,
-      coverUrl: `images/cover-${String(x.cover).padStart(2, '0')}.png`,
+      href: `Story.dc.html?id=${x.id}`,
+      coverUrl: `images/cover-${String(x.cover).padStart(4, '0')}.png`,
       sectionLabel: (S[x.section] || {}).label || '',
       sectionColor: (S[x.section] || {}).color || '#f0921f',
     };

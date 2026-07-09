@@ -28,16 +28,20 @@
   <header style="border-bottom:3px double rgba(244,239,230,0.25);">
     <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,36px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;font-family:'Space Mono',monospace;font-size:13px;color:#a89f8e;">
       <a href="Wall Kick Defender.dc.html" style="color:#f0921f;">← Wall Kick Defender</a>
-      <span style="color:#7d7566;letter-spacing:0.12em;">INDEPENDENT SLEEP JOURNALISM · {{ count }} DISPATCHES</span>
+      <span style="display:flex;gap:14px;flex-wrap:wrap;color:#7d7566;letter-spacing:0.12em;">
+        <a href="Shop.dc.html" style="color:#a89f8e;">SHOP</a>
+        <a href="Downloads.dc.html" style="color:#a89f8e;">DOWNLOADS</a>
+        <span>INDEPENDENT SLEEP JOURNALISM · {{ count }} DISPATCHES</span>
+      </span>
     </div>
     <div style="max-width:1200px;margin:0 auto;padding:20px clamp(16px,4vw,36px) 24px;text-align:center;border-top:1px solid rgba(244,239,230,0.08);">
-      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.34em;color:#f0921f;margin-bottom:12px;">EST. 3:47 AM · VOL. MMXXVI</div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.34em;color:#f0921f;margin-bottom:12px;">TODAY'S EDITION: APRIL 1, 2026 · EST. 3:47 AM · VOL. MMXXVI</div>
       <h1 style="font-size:clamp(40px,9vw,110px);line-height:0.86;font-weight:900;letter-spacing:-0.035em;margin:0;">THE KICK REPORT</h1>
       <div style="font-family:Newsreader,serif;font-style:italic;font-size:clamp(15px,2vw,21px);color:#a89f8e;margin-top:12px;">All the sleep that's fit to lose.</div>
       <div style="max-width:600px;margin:22px auto 0;position:relative;text-align:left;">
         <div style="display:flex;align-items:center;gap:10px;background:#1a1610;border:1px solid rgba(244,239,230,0.16);border-radius:13px;padding:5px 5px 5px 18px;">
           <span style="font-size:19px;color:#7d7566;">⌕</span>
-          <input value="{{ query }}" onInput="{{ onInput }}" onFocus="{{ onFocus }}" onKeyDown="{{ onKey }}" placeholder="Search 100 dispatches…" spellcheck="false" style="flex:1;background:transparent;border:none;outline:none;color:#f4efe6;font-family:Archivo;font-size:16px;font-weight:600;padding:11px 0;min-width:0;">
+          <input value="{{ query }}" onInput="{{ onInput }}" onFocus="{{ onFocus }}" onKeyDown="{{ onKey }}" placeholder="Search 1000 dispatches..." spellcheck="false" style="flex:1;background:transparent;border:none;outline:none;color:#f4efe6;font-family:Archivo;font-size:16px;font-weight:600;padding:11px 0;min-width:0;">
           <button onClick="{{ onGo }}" style="background:#f0921f;color:#14110d;border:none;border-radius:9px;padding:11px 18px;font-family:Archivo;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;">Search</button>
         </div>
         <sc-if value="{{ showSug }}" hint-placeholder-val="{{ false }}">
@@ -57,7 +61,7 @@
   <!-- BREAKING TICKER -->
   <div style="background:#e5484d;color:#14110d;padding:11px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #14110d;">
     <div style="display:inline-block;animation:tkr 46s linear infinite;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.02em;">
-      <span style="padding:0 22px;">⚠ BREAKING: Structural review finds sustained wall-kicking can compromise load-bearing integrity — "too many kicks can bring a building down" ✦ Acoustic study: not even the deep-bored platforms of Line 5 Eglinton could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ Apology deficit widens for 41st consecutive night ✦ ⚠ BREAKING: Structural review finds sustained wall-kicking can compromise load-bearing integrity — "too many kicks can bring a building down" ✦ Acoustic study: not even the deep-bored platforms of Line 5 Eglinton could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ Apology deficit widens for 41st consecutive night ✦ </span>
+      <span style="padding:0 22px;">⚠ BREAKING: Fictional apartment building collapses after sustained wall kicks; neighbors report weeks of 3:47 AM impacts before the shared wall gave up ✦ Today's edition: April 1, 2026 ✦ Acoustic study: not even deep-bored transit isolation could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ No device, no receipts, no peace ✦ ⚠ BREAKING: Fictional apartment building collapses after sustained wall kicks; neighbors report weeks of 3:47 AM impacts before the shared wall gave up ✦ Today's edition: April 1, 2026 ✦ Acoustic study: not even deep-bored transit isolation could fully isolate a determined 3 AM footstep ✦ Household seismic activity hits record 4.1 ✦ "Walk quieter" compliance holds steady at 0.0% ✦ No device, no receipts, no peace ✦ </span>
     </div>
   </div>
 
@@ -263,8 +267,8 @@ class Component extends DCLogic {
     const S = this.SECTIONS || {};
     const deco = a => ({
       ...a,
-      href: `Story ${String(a.id).padStart(3, '0')}.dc.html`,
-      coverUrl: `images/cover-${String(a.cover).padStart(2, '0')}.png`,
+      href: `Story.dc.html?id=${a.id}`,
+      coverUrl: `images/cover-${String(a.cover).padStart(4, '0')}.png`,
       sectionLabel: (S[a.section] || {}).label || '',
       sectionColor: (S[a.section] || {}).color || '#f0921f',
     });
@@ -273,7 +277,7 @@ class Component extends DCLogic {
       key: k,
       label: S[k].label,
       color: S[k].color,
-      articles: A.filter(x => x.section === k).map(deco),
+      articles: A.filter(x => x.section === k && (!A[0] || x.id !== A[0].id)).map(deco),
     }));
     const suggestions = (this.state.focused && this.state.query.trim())
       ? this.match(this.state.query).slice(0, 6).map(deco) : [];
